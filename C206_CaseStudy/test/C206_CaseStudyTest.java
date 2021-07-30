@@ -16,9 +16,15 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void c206_test() {
+		
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 		
+		int expected = 2;
+		assertEquals("Must compare 2 values", expected, C206_CaseStudy.example());
+		
 	}
+	
+	
 
 }

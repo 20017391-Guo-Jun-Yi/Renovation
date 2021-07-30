@@ -6,4 +6,10 @@ public class C206_CaseStudy {
 		System.out.println("Have fun!");
 	}
 
+	public static int example() {
+		int result =2;
+		System.out.println("Check the push code");
+		
+		return result;
+	}
 }
