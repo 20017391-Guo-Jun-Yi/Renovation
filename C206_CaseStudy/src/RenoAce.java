@@ -93,7 +93,7 @@ public class RenoAce {
 			String description = Helper.readString("Enter description > ");
 			String start = Helper.readString("Enter Start Date > ");
 			String end = Helper.readString("Enter End Date > ");
-			String amount = Helper.readString("Enter amount > ");
+			String amount = Helper.readString("Enter amount (include $)> ");
 
 			Packages pl= new Packages(code, description, start, end, amount);
 			return pl;
@@ -111,7 +111,7 @@ public class RenoAce {
 
 			for (int i = 0; i < packageList.size(); i++) {
 
-				output += String.format("%-10d %-30s %-10s %-10s %-20s\n", packageList.get(i).getCode(),
+				output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
 						packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
 						packageList.get(i).getAmount()); //error
 			}
@@ -119,7 +119,7 @@ public class RenoAce {
 		}
 		public static void viewAllPackages(ArrayList<Packages> packageList) {
 			RenoAce.setHeader("PACKAGE LIST");
-			String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "PACKAGE CODE", "DESCRIPTION",
+			String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "PACKAGE CODE", "DESCRIPTION",
 					"START DATE", "END DATE","PACKAGE AMOUNT");
 			 output += viewAllPackages1(packageList);	
 			System.out.println(output);
