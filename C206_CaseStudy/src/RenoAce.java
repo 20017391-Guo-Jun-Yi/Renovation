@@ -1,3 +1,4 @@
+
 /**
  * I declare that this code was written by me.
  * I will not copy or allow others to copy my code.
@@ -7,15 +8,17 @@
  */
 import java.util.ArrayList;
 
-
-
 public class RenoAce {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		
-		packageList.add(new Packages(0001, "SamplePackage1", "30-07-2021", "08-08-2021", "$5000"));
+		ArrayList<Packages> packageList = new ArrayList<Packages>();
+	
+		
+		
+		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "08-08-2021", "$5000"));
+		
 		
 		int option = 0;
 
@@ -25,15 +28,15 @@ public class RenoAce {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-			// Junhao
+				// Junhao
 
 			} else if (option == 2) {
-				RenoAce.setHeader("PACKAGES");			
+				RenoAce.setHeader("PACKAGES");
 				RenoAce.setHeader("OPTIONS :");
 				System.out.println("1. ADD");
 				System.out.println("2. VIEW");
 				System.out.println("3. DELETE");
-				
+
 				int itemType = Helper.readInt("Enter option for a function > ");
 
 				if (itemType == 1) {
@@ -44,12 +47,12 @@ public class RenoAce {
 				} else if (itemType == 2) {
 					// View all Packages
 					RenoAce.viewAllPackages(packageList);
-					
+
 				} else if (itemType == 3) {
 					// Delete a Package
 					RenoAce.deletePackages(packageList);
-				} 
-				
+				}
+
 				else {
 					System.out.println("Invalid option");
 				}
@@ -58,17 +61,18 @@ public class RenoAce {
 				// Azri
 
 			} else if (option == 4) {
-				//Suet Teng
+				// Suet Teng
 
 			} else if (option == 5) {
-				//Lixuan
-				
-			}else {
+				// Lixuan
+
+			} else {
 				System.out.println("Invalid option");
 			}
 
 		}
 	}
+
 	public static void menu() {
 		RenoAce.setHeader("Braiseduck & Co RENNOVATION APPLICATION");
 		System.out.println("1. USER ACCOUNT");
@@ -80,6 +84,7 @@ public class RenoAce {
 		Helper.line(80, "-");
 
 	}
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -87,55 +92,67 @@ public class RenoAce {
 	}
 
 //================================= Option 2 (PACKAGE)=================================
-		//Add package
-		public static Packages inputPackages() {
-			int code = Helper.readInt("Enter code > ");
-			String description = Helper.readString("Enter description > ");
-			String start = Helper.readString("Enter Start Date > ");
-			String end = Helper.readString("Enter End Date > ");
-			String amount = Helper.readString("Enter amount (include $)> ");
+	// Add package
+	public static Packages inputPackages() {
+		int code = Helper.readInt("Enter code > ");
+		String description = Helper.readString("Enter description > ");
+		String start = Helper.readString("Enter Start Date > ");
+		String end = Helper.readString("Enter End Date > ");
+		String amount = Helper.readString("Enter amount (include $)> ");
 
-			Packages pl= new Packages(code, description, start, end, amount);
-			return pl;
-			
-		}
-		public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
-			
-			packageList.add(pl);
-			System.out.println("Package added");
-		}
-		
-		// View all packages
-		public static String viewAllPackages1(ArrayList<Packages> packageList) {
-			String output = "";
+		Packages pl = new Packages(code, description, start, end, amount);
+		return pl;
 
-			for (int i = 0; i < packageList.size(); i++) {
+	}
 
-				output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
-						packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
-						packageList.get(i).getAmount()); //error
-			}
-			return output;
+	public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
+
+		packageList.add(pl);
+		System.out.println("Package added");
+	}
+
+	// View all packages
+	public static String viewAllPackages1(ArrayList<Packages> packageList) {
+		String output = "";
+
+		for (int i = 0; i < packageList.size(); i++) {
+
+			output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
+					packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
+					packageList.get(i).getAmount()); // error
 		}
-		public static void viewAllPackages(ArrayList<Packages> packageList) {
-			RenoAce.setHeader("PACKAGE LIST");
-			String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "PACKAGE CODE", "DESCRIPTION",
-					"START DATE", "END DATE","PACKAGE AMOUNT");
-			 output += viewAllPackages1(packageList);	
-			System.out.println(output);
-		}
-		
-		//Delete a package		
-		public static void deletePackages(ArrayList<Packages> packageList) {
-			int code = Helper.readInt("Enter code to delete > ");
+		return output;
+	}
+
+	public static void viewAllPackages(ArrayList<Packages> packageList) {
+		RenoAce.setHeader("PACKAGE LIST");
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "PACKAGE CODE", "DESCRIPTION", "START DATE",
+				"END DATE", "PACKAGE AMOUNT");
+		output += viewAllPackages1(packageList);
+		System.out.println(output);
+	}
+
+	// Delete a package
+	public static void deletePackages(ArrayList<Packages> packageList) {
+		int code = Helper.readInt("Enter code to delete > ");
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < packageList.size(); i++) {
 				if (code == packageList.get(i).getCode()) {
-//					packageList.get(i) = null; //error
-				} else {
-					System.out.println("Invalid Package code");
+					packageList.remove(i);
+					isRemove = true;
 				}
+				else{
+					isRemove = false;
+				}
+			} if (isRemove == true) {
+				System.out.println("Package deleted");
 			}
-			
+			else {
+				System.out.println("Package code invalid");
+			}
+
 		}
-		
+	}
 }
