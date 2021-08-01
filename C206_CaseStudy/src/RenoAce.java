@@ -7,8 +7,6 @@
  */
 import java.util.ArrayList;
 
-
-
 public class RenoAce {
 
 	public static void main(String[] args) {
