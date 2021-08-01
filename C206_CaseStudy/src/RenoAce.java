@@ -11,15 +11,11 @@ import java.util.ArrayList;
 public class RenoAce {
 
 	public static void main(String[] args) {
-		
-		
+
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
-	
-		
-		
+
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "08-08-2021", "$5000"));
-		
-		
+
 		int option = 0;
 
 		while (option != 5) {
@@ -142,17 +138,15 @@ public class RenoAce {
 				if (code == packageList.get(i).getCode()) {
 					packageList.remove(i);
 					isRemove = true;
-				}
-				else{
+				} else {
 					isRemove = false;
 				}
-			} if (isRemove == true) {
-				System.out.println("Package deleted");
 			}
-			else {
+			if (isRemove == true) {
+				System.out.println("Package deleted");
+			} else {
 				System.out.println("Package code invalid");
 			}
-
 		}
 	}
 }
