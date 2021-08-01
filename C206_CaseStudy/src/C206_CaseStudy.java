@@ -6,10 +6,10 @@ public class C206_CaseStudy {
 
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
-		
+
 		packageList.add(new Packages(0001, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
-		
+
 		int option = 0;
 
 		while (option != 5) {
@@ -24,14 +24,14 @@ public class C206_CaseStudy {
 				System.out.println("1. ADD");
 				System.out.println("2. VIEW");
 				System.out.println("3. DELETE");
-				
+
 				int number = Helper.readInt("Enter option for a function: ");
-				
+
 				if (number == 1)
 				{
 					User us = inputUser();
 					C206_CaseStudy.addPackages(userList, us);
-					
+
 				}
 				else if (number == 2)
 				{
@@ -62,7 +62,7 @@ public class C206_CaseStudy {
 					// Add Packages
 					Packages pl = inputPackages();
 					C206_CaseStudy.addPackages(packageList, pl);
-					
+
 				} else if (itemType == 2) {
 					// View all Packages
 					C206_CaseStudy.viewAllPackages(packageList);
@@ -111,7 +111,7 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
+
 	//================================= Option 1 (User)=================================
 	public static User inputUser()
 	{
@@ -120,18 +120,18 @@ public class C206_CaseStudy {
 		String email = Helper.readString("Enter email: ");
 		String password = Helper.readString("Enter Password: ");
 		String status = "new";
-		
+
 		User us = new User (name, role, email, password, status);
-		
+
 		return us;
-		
+
 	}
 	public static void addPackages(ArrayList<User> userList, User us) {
 
 		userList.add(us);
 		System.out.println("User added");
 	}
-	
+
 	public static String ViewUser(ArrayList<User> userList)
 	{
 		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD",
@@ -145,48 +145,56 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return output;
 	}
-	
-	public static void deleteUser(ArrayList<User> userList) {
+
+	public static void deleteUser(ArrayList<User> userList) 
+	{
 		String name = Helper.readString("Enter name: ");
-		boolean isRemove = false;
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		if (confirm == 'Y' || confirm == 'y') {
-			for (int i = 0; i < userList.size(); i++) {
-				if (name.equalsIgnoreCase(name)) {
+		if (confirm == 'Y' || confirm == 'y')
+		{
+			for (int i = 0; i < userList.size(); i++) 
+			{
+				if (name.equals(userList.get(i).getName()))
+				{
 					userList.remove(i);
-					isRemove = true;
-				} else {
-					isRemove = false;
+					System.out.println("User deleted");
+				} 
+				else
+				{
+					System.out.println("User not found");
 				}
 			}
-			if (isRemove == true) {
-				System.out.println("User deleted");
-			} else {
-				System.out.println("User not found");
-			}
+		}
+		else if (confirm == 'N' || confirm == 'n')
+		{
+			System.out.println("User not deleted!");
+		}
+		else 
+		{
+			System.out.println("Invaild Input");
 		}
 	}
-	
+
 
 	//================================= Option 2 (PACKAGE)=================================
 	// Add package
-		public static Packages inputPackages() {
-			int code = Helper.readInt("Enter code > ");
-			String description = Helper.readString("Enter description > ");
-			String start = Helper.readString("Enter Start Date > ");
-			String end = Helper.readString("Enter End Date > ");
-			String amount = Helper.readString("Enter amount (include $)> ");
+	public static Packages inputPackages() {
+		int code = Helper.readInt("Enter code > ");
+		String description = Helper.readString("Enter description > ");
+		String start = Helper.readString("Enter Start Date > ");
+		String end = Helper.readString("Enter End Date > ");
+		String amount = Helper.readString("Enter amount (include $)> ");
 
-			Packages pl = new Packages(code, description, start, end, amount);
-			return pl;
+		Packages pl = new Packages(code, description, start, end, amount);
+		return pl;
 
-		}
+	}
 
-		public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
+	public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
 
-			packageList.add(pl);
-			System.out.println("Package added");
-		}
+		packageList.add(pl);
+		System.out.println("Package added");
+	}
 
 
 	// View all packages
