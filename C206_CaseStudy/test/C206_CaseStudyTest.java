@@ -21,7 +21,7 @@ public class C206_CaseStudyTest {
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 		
 		int expected = 2;
-		assertEquals("Must compare 2 values", expected, C206_CaseStudy.example());
+		assertEquals("Must compare 2 values", expected, 2);
 		
 	}
 	

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class RenoAce {
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
@@ -231,7 +231,8 @@ public class RenoAce {
 				System.out.println("Package code invalid");
 			}
 		}
-	}
+	} 
+	*/
 
 
 }
