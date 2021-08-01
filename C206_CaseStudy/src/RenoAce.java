@@ -132,7 +132,89 @@ public class RenoAce {
 		System.out.println("User added");
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//================================= Option 2 (PACKAGE)=================================
 	//Add package
 	public static Packages inputPackages() {
@@ -160,29 +242,41 @@ public class RenoAce {
 
 			output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
 					packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
-					packageList.get(i).getAmount()); //error
+					packageList.get(i).getAmount()); // error
 		}
 		return output;
 	}
+
 	public static void viewAllPackages(ArrayList<Packages> packageList) {
 		RenoAce.setHeader("PACKAGE LIST");
-		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "PACKAGE CODE", "DESCRIPTION",
-				"START DATE", "END DATE","PACKAGE AMOUNT");
-		output += viewAllPackages1(packageList);	
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "PACKAGE CODE", "DESCRIPTION", "START DATE",
+				"END DATE", "PACKAGE AMOUNT");
+		output += viewAllPackages1(packageList);
 		System.out.println(output);
 	}
+
 
 	//Delete a package		
 	public static void deletePackages(ArrayList<Packages> packageList) {
 		int code = Helper.readInt("Enter code to delete > ");
-		for (int i = 0; i < packageList.size(); i++) {
-			if (code == packageList.get(i).getCode()) {
-				//					packageList.get(i) = null; //error
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
+			for (int i = 0; i < packageList.size(); i++) {
+				if (code == packageList.get(i).getCode()) {
+					packageList.remove(i);
+					isRemove = true;
+				} else {
+					isRemove = false;
+				}
+			}
+			if (isRemove == true) {
+				System.out.println("Package deleted");
 			} else {
-				System.out.println("Invalid Package code");
+				System.out.println("Package code invalid");
 			}
 		}
-
 	}
+
 
 }
