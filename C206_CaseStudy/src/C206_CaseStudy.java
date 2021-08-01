@@ -1,5 +1,4 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.ArrayList;
 
 import com.sun.tools.sjavac.Package;
@@ -275,8 +274,132 @@ public class C206_CaseStudy {
 				System.out.println("Package code invalid");
 			}
 		}
-		}//================================= Option 5 (MANAGE APPOINTMENT)==================================
-		// Add package
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//================================= Option 5 (MANAGE APPOINTMENT)==================================
+		// Add appointment
 		public static Appointment inputAppointment() {
 			
 			String date = Helper.readString("Enter date of appointment (DD/MM/YYYY) > ");
@@ -295,7 +418,7 @@ public class C206_CaseStudy {
 			System.out.println("Appointment added");
 
 		}
-		
+		// View all appointment
 		public static String viewAllAppointment(ArrayList<Appointment> appointmentList)
 		{
 			String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment", "Designer Name",
@@ -310,35 +433,9 @@ public class C206_CaseStudy {
 			System.out.println(output);
 			return output;
 		}
+		
 
-
-
-		// View all packages
-		/*public static String viewAllAppointment(ArrayList<Appointment> appointmentList) {
-			String output = "";
-
-			for (int i = 0; i < appointmentList.size(); i++) {
-
-				output += String.format("%-20S %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
-						appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getAddress()); // error
-			}
-			return output;
-		}
-
-		public static void viewAllAppointments(ArrayList<Appointment> appointmentList) {
-			
-			
-			C206_CaseStudy.setHeader("APPOINTMENT LIST");
-			String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment", "Designer Name",
-					"Address of the premise");
-			output += viewAllAppointment(appointmentList);
-			
-			System.out.println(output);
-		}
-		*/
-
-
-		//Delete a package		
+		//Delete a appointment	
 		public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
 			String name = Helper.readString("Enter customer name > ");
 			
