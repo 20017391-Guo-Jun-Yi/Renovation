@@ -124,7 +124,7 @@ public class RenoAce {
 		User us = new User (name, role, email, password, status);
 		
 		return us;
-	
+		
 	}
 	public static void addPackages(ArrayList<User> userList, User us) {
 
@@ -232,6 +232,7 @@ public class RenoAce {
 			}
 		}
 	}
+
 
 }
 
