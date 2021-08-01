@@ -1,10 +1,3 @@
-/**
- * I declare that this code was written by me.
- * I will not copy or allow others to copy my code.
- * I understand that copying code is considered as plagiarism.
- *
- * 20017391, 30 Jul 2021 10:04:25 pm
- */
 import java.util.ArrayList;
 
 public class RenoAce {
@@ -14,7 +7,6 @@ public class RenoAce {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		
-
 		packageList.add(new Packages(0001, "SamplePackage1", "30-07-2021", "08-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		
@@ -37,15 +29,17 @@ public class RenoAce {
 				
 				if (number == 1)
 				{
+					User us = inputUser();
+					RenoAce.addPackages(userList, us);
 					
 				}
 				else if (number == 2)
 				{
-					
+					RenoAce.ViewUser(userList);
 				}
 				else if (number == 3)
 				{
-					
+					RenoAce.deleteUser(userList);
 				}
 				else
 				{
@@ -67,7 +61,8 @@ public class RenoAce {
 				if (itemType == 1) {
 					// Add Packages
 					Packages pl = inputPackages();
-
+					RenoAce.addPackages(packageList, pl);
+					
 				} else if (itemType == 2) {
 					// View all Packages
 					RenoAce.viewAllPackages(packageList);
@@ -90,8 +85,12 @@ public class RenoAce {
 			} else if (option == 5) {
 				//Lixuan
 
-			}else {
-				System.out.println("Invalid option");
+			}else if (option == 6){
+				System.out.println("Thanks for your using our application. Bye!");
+				break;
+			}
+			else {
+				System.out.println("Invalid Option");
 			}
 
 		}
@@ -119,7 +118,7 @@ public class RenoAce {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
 		String email = Helper.readString("Enter email: ");
-		String password = Helper.readString("Enter Password");
+		String password = Helper.readString("Enter Password: ");
 		String status = "new";
 		
 		User us = new User (name, role, email, password, status);
@@ -133,107 +132,62 @@ public class RenoAce {
 		System.out.println("User added");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static String ViewUser(ArrayList<User> userList)
+	{
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD",
+				"ROLE", "STATUS");
+
+		for (int i = 0; i < userList.size(); i++) {
+
+			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(), userList.get(i).getEmail(),
+					userList.get(i).getPassword(), userList.get(i).getRole(), userList.get(i).getStatus());
+		}
+		System.out.println(output);
+		return output;
+	}
+	
+	public static void deleteUser(ArrayList<User> userList) {
+		String name = Helper.readString("Enter name: ");
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
+			for (int i = 0; i < userList.size(); i++) {
+				if (name.equalsIgnoreCase(name)) {
+					userList.remove(i);
+					isRemove = true;
+				} else {
+					isRemove = false;
+				}
+			}
+			if (isRemove == true) {
+				System.out.println("User deleted");
+			} else {
+				System.out.println("User not found");
+			}
+		}
+	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//================================= Option 2 (PACKAGE)=================================
-	//Add package
-	public static Packages inputPackages() {
-		int code = Helper.readInt("Enter code > ");
-		String description = Helper.readString("Enter description > ");
-		String start = Helper.readString("Enter Start Date > ");
-		String end = Helper.readString("Enter End Date > ");
-		String amount = Helper.readString("Enter amount (include $)> ");
+	// Add package
+		public static Packages inputPackages() {
+			int code = Helper.readInt("Enter code > ");
+			String description = Helper.readString("Enter description > ");
+			String start = Helper.readString("Enter Start Date > ");
+			String end = Helper.readString("Enter End Date > ");
+			String amount = Helper.readString("Enter amount (include $)> ");
 
-		Packages pl= new Packages(code, description, start, end, amount);
-		return pl;
+			Packages pl = new Packages(code, description, start, end, amount);
+			return pl;
 
-	}
-	public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
+		}
 
-		packageList.add(pl);
-		System.out.println("Package added");
-	}
+		public static void addPackages(ArrayList<Packages> packageList, Packages pl) {
+
+			packageList.add(pl);
+			System.out.println("Package added");
+		}
+
 
 	// View all packages
 	public static String viewAllPackages1(ArrayList<Packages> packageList) {
@@ -281,3 +235,4 @@ public class RenoAce {
 
 
 }
+
