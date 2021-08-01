@@ -14,7 +14,6 @@ public class RenoAce {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		
-
 		packageList.add(new Packages(0001, "SamplePackage1", "30-07-2021", "08-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		
