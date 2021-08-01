@@ -1,4 +1,8 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+
+import com.sun.tools.sjavac.Package;
 
 public class C206_CaseStudy {
 
@@ -6,9 +10,11 @@ public class C206_CaseStudy {
 
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
+		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 
 		packageList.add(new Packages(0001, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
+		appointmentList.add(new Appointment("01/08/2021","14:00","JEN","RP"));
 
 		int option = 0;
 
@@ -84,6 +90,36 @@ public class C206_CaseStudy {
 
 			} else if (option == 5) {
 				//Lixuan
+				C206_CaseStudy.setHeader("MANAGE APPOINTMENT");			
+				C206_CaseStudy.setHeader("OPTIONS :");
+				System.out.println("1. ADD an APPOINTMENT");
+				System.out.println("2. View all APPOINTMENT");
+				System.out.println("3. Delete an APPOINTMENT");
+				
+				int appOption = Helper.readInt("Enter option for a function > ");
+			
+
+				if (appOption == 1)
+				{
+					Appointment app = inputAppointment();
+					C206_CaseStudy.addAppointment(appointmentList,app);
+
+				}
+				else if (appOption == 2)
+				{
+					C206_CaseStudy.viewAllAppointment(appointmentList);
+					
+				}
+				else if (appOption == 3)
+				{
+
+					C206_CaseStudy.deleteAppointment(appointmentList);
+				}
+				else
+				{
+					System.out.println("Invaild option");
+				}
+
 
 			}else if (option == 6){
 				System.out.println("Thanks for your using our application. Bye!");
@@ -239,5 +275,89 @@ public class C206_CaseStudy {
 				System.out.println("Package code invalid");
 			}
 		}
+		}//================================= Option 5 (MANAGE APPOINTMENT)==================================
+		// Add package
+		public static Appointment inputAppointment() {
+			
+			String date = Helper.readString("Enter date of appointment (DD/MM/YYYY) > ");
+		    String time = Helper.readString("Enter time of appointment (HH:MM) > ");
+			String name = Helper.readString("Enter designer name > ");
+			String premise = Helper.readString("Enter address of the premise > ");
+
+			Appointment app = new Appointment (date, time, name, premise);
+			return app;
+
+		}
+
+		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment app) {
+			
+			appointmentList.add(app);
+			System.out.println("Appointment added");
+
+		}
+		
+		public static String viewAllAppointment(ArrayList<Appointment> appointmentList)
+		{
+			String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment", "Designer Name",
+					"Address of the premise");
+
+			for (int i = 0; i < appointmentList.size(); i++) {
+
+				
+						output += String.format("%-20s %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
+								appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getAddress()); 
+			}
+			System.out.println(output);
+			return output;
+		}
+
+
+
+		// View all packages
+		/*public static String viewAllAppointment(ArrayList<Appointment> appointmentList) {
+			String output = "";
+
+			for (int i = 0; i < appointmentList.size(); i++) {
+
+				output += String.format("%-20S %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
+						appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getAddress()); // error
+			}
+			return output;
+		}
+
+		public static void viewAllAppointments(ArrayList<Appointment> appointmentList) {
+			
+			
+			C206_CaseStudy.setHeader("APPOINTMENT LIST");
+			String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment", "Designer Name",
+					"Address of the premise");
+			output += viewAllAppointment(appointmentList);
+			
+			System.out.println(output);
+		}
+		*/
+
+
+		//Delete a package		
+		public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
+			String name = Helper.readString("Enter customer name > ");
+			
+			boolean isRemove = false;
+			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < appointmentList.size(); i++) {
+					if (name == appointmentList.get(i).getName()) {
+						appointmentList.remove(i);
+						isRemove = true;
+					} else {
+						isRemove = false;
+					}
+				}
+				if (isRemove == true) {
+					System.out.println("Appointment deleted");
+				} else {
+					System.out.println("Invalid username");
+				}
+			}
 	}
 }
