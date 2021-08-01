@@ -36,15 +36,17 @@ public class RenoAce {
 				
 				if (number == 1)
 				{
+					User us = inputUser();
+					RenoAce.addPackages(userList, us);
 					
 				}
 				else if (number == 2)
 				{
-					
+					RenoAce.ViewUser(userList);
 				}
 				else if (number == 3)
 				{
-					
+					RenoAce.deleteUser(userList);
 				}
 				else
 				{
@@ -118,7 +120,7 @@ public class RenoAce {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
 		String email = Helper.readString("Enter email: ");
-		String password = Helper.readString("Enter Password");
+		String password = Helper.readString("Enter Password: ");
 		String status = "new";
 		
 		User us = new User (name, role, email, password, status);
@@ -132,89 +134,41 @@ public class RenoAce {
 		System.out.println("User added");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static String ViewUser(ArrayList<User> userList)
+	{
+		String output = "";
+
+		for (int i = 0; i < userList.size(); i++) {
+
+			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(), userList.get(i).getEmail(),
+					userList.get(i).getPassword(), userList.get(i).getRole(), userList.get(i).getStatus());
+		}
+		System.out.println(output);
+		return output;
+	}
+	
+	public static void deleteUser(ArrayList<User> userList) {
+		String name = Helper.readString("Enter name: ");
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
+			for (int i = 0; i < userList.size(); i++) {
+				if (name.equalsIgnoreCase(name)) {
+					userList.remove(i);
+					isRemove = true;
+				} else {
+					isRemove = false;
+				}
+			}
+			if (isRemove == true) {
+				System.out.println("User deleted");
+			} else {
+				System.out.println("User not found");
+			}
+		}
+	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//================================= Option 2 (PACKAGE)=================================
 	//Add package
 	public static Packages inputPackages() {
