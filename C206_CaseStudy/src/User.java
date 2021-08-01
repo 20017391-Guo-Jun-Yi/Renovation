@@ -7,9 +7,6 @@
  * 20041283, 1 Aug 2021 2:37:04 pm
  */
 
-
-
-
 public class User {
 	
 	private String name;
