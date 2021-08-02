@@ -8,7 +8,7 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-
+		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021","14:00","JEN","RP"));
