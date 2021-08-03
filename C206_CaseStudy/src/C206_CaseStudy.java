@@ -8,7 +8,7 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-		
+
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "RP"));
@@ -32,7 +32,7 @@ public class C206_CaseStudy {
 
 				if (number == 1) {
 					User us = inputUser();
-					C206_CaseStudy.addPackages(userList, us);
+					C206_CaseStudy.addusers(userList, us);
 
 				} else if (number == 2) {
 					C206_CaseStudy.ViewUser(userList);
@@ -142,7 +142,7 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void addPackages(ArrayList<User> userList, User us) {
+	public static void addusers(ArrayList<User> userList, User us) {
 
 		userList.add(us);
 		System.out.println("User added");
@@ -161,22 +161,51 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static void deleteUser(ArrayList<User> userList) {
+	public static Boolean docheckUser(ArrayList<User> userList, String name) {
+
+		boolean deleted = false;
+		for (int i = 0; i < userList.size(); i++) {
+
+			name = userList.get(i).getName();
+
+			if (name.equals(userList.get(i).getName())) 
+			{
+				deleted = true;
+			}
+		}
+		return deleted;
+	}
+	public static void deleteUser(ArrayList<User> userList)
+	{
+		C206_CaseStudy.ViewUser(userList);
 		String name = Helper.readString("Enter name: ");
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		if (confirm == 'Y' || confirm == 'y') {
-			for (int i = 0; i < userList.size(); i++) {
-				if (name.equals(userList.get(i).getName())) {
-					userList.remove(i);
-					System.out.println("User deleted");
-				} else {
-					System.out.println("User not found");
+		boolean ischecked = docheckUser(userList, name);
+		if (ischecked == false)
+		{
+			System.out.println("user not deleted");
+		}
+		else
+		{
+			if (confirm == 'Y' || confirm == 'y') 
+			{
+				for (int i = 0; i < userList.size(); i++)
+				{
+					if (name.equalsIgnoreCase(userList.get(i).getName())) 
+					{
+						userList.remove(i);
+						System.out.println("User deleted");
+					}
 				}
+			} 
+			else if (confirm == 'N' || confirm == 'n') 
+			{
+				System.out.println("User not deleted!");
 			}
-		} else if (confirm == 'N' || confirm == 'n') {
-			System.out.println("User not deleted!");
-		} else {
-			System.out.println("Invaild Input");
+			else 
+			{
+				System.out.println("Invaild Input");
+			}
 		}
 	}
 
