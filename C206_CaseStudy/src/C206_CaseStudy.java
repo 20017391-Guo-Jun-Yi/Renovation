@@ -11,7 +11,7 @@ public class C206_CaseStudy {
 		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
-		appointmentList.add(new Appointment("01/08/2021","14:00","JEN","RP"));
+		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "RP"));
 
 		int option = 0;
 
@@ -30,30 +30,21 @@ public class C206_CaseStudy {
 
 				int number = Helper.readInt("Enter option for a function: ");
 
-				if (number == 1)
-				{
+				if (number == 1) {
 					User us = inputUser();
 					C206_CaseStudy.addPackages(userList, us);
 
-				}
-				else if (number == 2)
-				{
+				} else if (number == 2) {
 					C206_CaseStudy.ViewUser(userList);
-				}
-				else if (number == 3)
-				{
+				} else if (number == 3) {
 					C206_CaseStudy.deleteUser(userList);
-				}
-				else
-				{
+				} else {
 					System.out.println("Invaild option");
 				}
 
-
-
 			} else if (option == 2) {
 				// JunYi
-				C206_CaseStudy.setHeader("PACKAGES");			
+				C206_CaseStudy.setHeader("PACKAGES");
 				C206_CaseStudy.setHeader("OPTIONS :");
 				System.out.println("1. ADD");
 				System.out.println("2. VIEW");
@@ -73,7 +64,7 @@ public class C206_CaseStudy {
 				} else if (itemType == 3) {
 					// Delete a Package
 					C206_CaseStudy.deletePackages(packageList);
-				} 
+				}
 
 				else {
 					System.out.println("Invalid option");
@@ -83,51 +74,42 @@ public class C206_CaseStudy {
 				// Azri
 
 			} else if (option == 4) {
-				//Suet Teng
+				// Suet Teng
 
 			} else if (option == 5) {
-				//Lixuan
-				C206_CaseStudy.setHeader("MANAGE APPOINTMENT");			
+				// Lixuan
+				C206_CaseStudy.setHeader("MANAGE APPOINTMENT");
 				C206_CaseStudy.setHeader("OPTIONS :");
 				System.out.println("1. ADD an APPOINTMENT");
 				System.out.println("2. View all APPOINTMENT");
 				System.out.println("3. Delete an APPOINTMENT");
-				
+
 				int appOption = Helper.readInt("Enter option for a function > ");
-			
 
-				if (appOption == 1)
-				{
+				if (appOption == 1) {
 					Appointment app = inputAppointment();
-					C206_CaseStudy.addAppointment(appointmentList,app);
+					C206_CaseStudy.addAppointment(appointmentList, app);
 
-				}
-				else if (appOption == 2)
-				{
+				} else if (appOption == 2) {
 					C206_CaseStudy.viewAllAppointment(appointmentList);
-					
-				}
-				else if (appOption == 3)
-				{
+
+				} else if (appOption == 3) {
 
 					C206_CaseStudy.deleteAppointment(appointmentList);
-				}
-				else
-				{
+				} else {
 					System.out.println("Invaild option");
 				}
 
-
-			}else if (option == 6){
+			} else if (option == 6) {
 				System.out.println("Thanks for your using our application. Bye!");
 				break;
-			}
-			else {
+			} else {
 				System.out.println("Invalid Option");
 			}
 
 		}
 	}
+
 	public static void menu() {
 		C206_CaseStudy.setHeader("Braiseduck & Co RENNOVATION APPLICATION");
 		System.out.println("1. USER ACCOUNT");
@@ -139,77 +121,66 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 
 	}
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
 
-	//================================= Option 1 (User)=================================
-	public static User inputUser()
-	{
+	// ================================= Option 1(User)=================================
+	public static User inputUser() {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
 		String email = Helper.readString("Enter email: ");
 		String password = Helper.readString("Enter Password: ");
 		String status = "new";
 
-		User us = new User (name, role, email, password, status);
+		User us = new User(name, role, email, password, status);
 
 		return us;
 
 	}
+
 	public static void addPackages(ArrayList<User> userList, User us) {
 
 		userList.add(us);
 		System.out.println("User added");
 	}
 
-	public static String ViewUser(ArrayList<User> userList)
-	{
-		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD",
-				"ROLE", "STATUS");
+	public static String ViewUser(ArrayList<User> userList) {
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD", "ROLE", "STATUS");
 
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(), userList.get(i).getEmail(),
-					userList.get(i).getPassword(), userList.get(i).getRole(), userList.get(i).getStatus());
+			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
+					userList.get(i).getEmail(), userList.get(i).getPassword(), userList.get(i).getRole(),
+					userList.get(i).getStatus());
 		}
 		System.out.println(output);
 		return output;
 	}
 
-	public static void deleteUser(ArrayList<User> userList) 
-	{
+	public static void deleteUser(ArrayList<User> userList) {
 		String name = Helper.readString("Enter name: ");
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		if (confirm == 'Y' || confirm == 'y')
-		{
-			for (int i = 0; i < userList.size(); i++) 
-			{
-				if (name.equals(userList.get(i).getName()))
-				{
+		if (confirm == 'Y' || confirm == 'y') {
+			for (int i = 0; i < userList.size(); i++) {
+				if (name.equals(userList.get(i).getName())) {
 					userList.remove(i);
 					System.out.println("User deleted");
-				} 
-				else
-				{
+				} else {
 					System.out.println("User not found");
 				}
 			}
-		}
-		else if (confirm == 'N' || confirm == 'n')
-		{
+		} else if (confirm == 'N' || confirm == 'n') {
 			System.out.println("User not deleted!");
-		}
-		else 
-		{
+		} else {
 			System.out.println("Invaild Input");
 		}
 	}
 
-
-	//================================= Option 2 (PACKAGE)=================================
+	// ================================= Option 2(PACKAGE)=================================
 	// Add package
 	public static Packages inputPackages() {
 		int code = Helper.readInt("Enter code > ");
@@ -229,7 +200,6 @@ public class C206_CaseStudy {
 		System.out.println("Package added");
 	}
 
-
 	// View all packages
 	public static String viewAllPackages1(ArrayList<Packages> packageList) {
 		String output = "";
@@ -238,7 +208,7 @@ public class C206_CaseStudy {
 
 			output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
 					packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
-					packageList.get(i).getAmount()); // error
+					packageList.get(i).getAmount()); 
 		}
 		return output;
 	}
@@ -251,8 +221,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-
-	//Delete a package		
+	// Delete a package
 	public static void deletePackages(ArrayList<Packages> packageList) {
 		int code = Helper.readInt("Enter code to delete > ");
 		boolean isRemove = false;
@@ -269,190 +238,72 @@ public class C206_CaseStudy {
 			if (isRemove == true) {
 				System.out.println("Package deleted");
 			} else {
-				System.out.println("Package code invalid");
+				System.out.println("User unfound");
 			}
+		} else if (confirm == 'N' || confirm == 'n') {
+
+			System.out.println("User not deleted");
+		} else {
+			System.out.println("Invalid input");
 		}
+	}
+
+	// ================================= Option 5 (MANAGE APPOINTMENT)==================================
+	// Add appointment
+	public static Appointment inputAppointment() {
+
+		String date = Helper.readString("Enter date of appointment (DD/MM/YYYY) > ");
+		String time = Helper.readString("Enter time of appointment (HH:MM) > ");
+		String name = Helper.readString("Enter designer name > ");
+		String premise = Helper.readString("Enter address of the premise > ");
+
+		Appointment app = new Appointment(date, time, name, premise);
+		return app;
+
+	}
+
+	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment app) {
+
+		appointmentList.add(app);
+		System.out.println("Appointment added");
+
+	}
+
+	// View all appointment
+	public static String viewAllAppointment(ArrayList<Appointment> appointmentList) {
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment",
+				"Designer Name", "Address of the premise");
+
+		for (int i = 0; i < appointmentList.size(); i++) {
+
+			output += String.format("%-20s %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
+					appointmentList.get(i).getTime(), appointmentList.get(i).getName(),
+					appointmentList.get(i).getAddress());
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//================================= Option 5 (MANAGE APPOINTMENT)==================================
-		// Add appointment
-		public static Appointment inputAppointment() {
-			
-			String date = Helper.readString("Enter date of appointment (DD/MM/YYYY) > ");
-		    String time = Helper.readString("Enter time of appointment (HH:MM) > ");
-			String name = Helper.readString("Enter designer name > ");
-			String premise = Helper.readString("Enter address of the premise > ");
+		System.out.println(output);
+		return output;
+	}
 
-			Appointment app = new Appointment (date, time, name, premise);
-			return app;
+	// Delete a appointment
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
+		String name = Helper.readString("Enter customer name > ");
 
-		}
-
-		public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment app) {
-			
-			appointmentList.add(app);
-			System.out.println("Appointment added");
-
-		}
-		// View all appointment
-		public static String viewAllAppointment(ArrayList<Appointment> appointmentList)
-		{
-			String output = String.format("%-20s %-20s %-20s %-20s\n", "Date-Of-Appointment", "Time-of-Appointment", "Designer Name",
-					"Address of the premise");
-
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < appointmentList.size(); i++) {
-
-				
-						output += String.format("%-20s %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
-								appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getAddress()); 
-			}
-			System.out.println(output);
-			return output;
-		}
-		
-
-		//Delete a appointment	
-		public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
-			String name = Helper.readString("Enter customer name > ");
-			
-			boolean isRemove = false;
-			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-			if (confirm == 'Y' || confirm == 'y') {
-				for (int i = 0; i < appointmentList.size(); i++) {
-					if (name == appointmentList.get(i).getName()) {
-						appointmentList.remove(i);
-						isRemove = true;
-					} else {
-						isRemove = false;
-					}
-				}
-				if (isRemove == true) {
-					System.out.println("Appointment deleted");
+				if (name == appointmentList.get(i).getName()) {
+					appointmentList.remove(i);
+					isRemove = true;
 				} else {
-					System.out.println("Invalid username");
+					isRemove = false;
 				}
 			}
+			if (isRemove == true) {
+				System.out.println("Appointment deleted");
+			} else {
+				System.out.println("Invalid username");
+			}
+		}
 	}
 }
