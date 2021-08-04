@@ -11,7 +11,7 @@ public class C206_CaseStudy {
 
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
-		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN","Lixuan", "RP"));
+		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
 
 		int option = 0;
 
@@ -33,10 +33,9 @@ public class C206_CaseStudy {
 				if (number == 1) {
 					User us = inputUser();
 					C206_CaseStudy.addusers(userList, us);
-
 				} else if (number == 2) {
 					C206_CaseStudy.ViewUser(userList);
-				} else if (number == 3) { 
+				} else if (number == 3) {
 					C206_CaseStudy.deleteUser(userList);
 				} else {
 					System.out.println("Invaild option");
@@ -128,7 +127,8 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	// ================================= Option 1(User)=================================
+	// ================================= Option
+	// 1(User)=================================
 	public static User inputUser() {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
@@ -168,48 +168,38 @@ public class C206_CaseStudy {
 
 			name = userList.get(i).getName();
 
-			if (name.equals(userList.get(i).getName())) 
-			{
+			if (name.equals(userList.get(i).getName())) {
 				deleted = true;
 			}
 		}
 		return deleted;
 	}
-	public static void deleteUser(ArrayList<User> userList)
-	{
+
+	public static void deleteUser(ArrayList<User> userList) {
 		C206_CaseStudy.ViewUser(userList);
 		String name = Helper.readString("Enter name: ");
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		boolean ischecked = docheckUser(userList, name);
-		if (ischecked == false)
-		{
+		if (ischecked == false) {
 			System.out.println("user not deleted");
-		}
-		else
-		{
-			if (confirm == 'Y' || confirm == 'y') 
-			{
-				for (int i = 0; i < userList.size(); i++)
-				{
-					if (name.equalsIgnoreCase(userList.get(i).getName())) 
-					{
+		} else {
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < userList.size(); i++) {
+					if (name.equalsIgnoreCase(userList.get(i).getName())) {
 						userList.remove(i);
 						System.out.println("User deleted");
 					}
 				}
-			} 
-			else if (confirm == 'N' || confirm == 'n') 
-			{
+			} else if (confirm == 'N' || confirm == 'n') {
 				System.out.println("User not deleted!");
-			}
-			else 
-			{
+			} else {
 				System.out.println("Invaild Input");
 			}
 		}
 	}
 
-	// ================================= Option 2(PACKAGE)=================================
+	// ================================= Option
+	// 2(PACKAGE)=================================
 	// Add package
 	public static Packages inputPackages() {
 		int code = Helper.readInt("Enter code > ");
@@ -237,7 +227,7 @@ public class C206_CaseStudy {
 
 			output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
 					packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
-					packageList.get(i).getAmount()); 
+					packageList.get(i).getAmount());
 		}
 		return output;
 	}
@@ -277,8 +267,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-
-	// ================================= Option 5 (MANAGE APPOINTMENT)==================================
+	// ================================= Option 5 (MANAGE
+	// APPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
 
@@ -308,8 +298,8 @@ public class C206_CaseStudy {
 		for (int i = 0; i < appointmentList.size(); i++) {
 
 			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
-					appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getCustName(),
-					appointmentList.get(i).getAddress());
+					appointmentList.get(i).getTime(), appointmentList.get(i).getName(),
+					appointmentList.get(i).getCustName(), appointmentList.get(i).getAddress());
 		}
 		System.out.println(output);
 		return output;
