@@ -36,7 +36,7 @@ public class C206_CaseStudy {
 
 				} else if (number == 2) {
 					C206_CaseStudy.ViewUser(userList);
-				} else if (number == 3) {
+				} else if (number == 3) { 
 					C206_CaseStudy.deleteUser(userList);
 				} else {
 					System.out.println("Invaild option");
@@ -276,7 +276,7 @@ public class C206_CaseStudy {
 			System.out.println("Invalid input");
 		}
 	}
-	
+
 
 	// ================================= Option 5 (MANAGE APPOINTMENT)==================================
 	// Add appointment
@@ -341,5 +341,5 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Invalid input");
 		}
-}
+	}
 }
