@@ -267,11 +267,11 @@ public class C206_CaseStudy {
 			if (isRemove == true) {
 				System.out.println("Package deleted");
 			} else {
-				System.out.println("User unfound");
+				System.out.println("Package unfound");
 			}
 		} else if (confirm == 'N' || confirm == 'n') {
 
-			System.out.println("User not deleted");
+			System.out.println("Package not deleted");
 		} else {
 			System.out.println("Invalid input");
 		}
