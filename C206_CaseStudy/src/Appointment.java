@@ -12,13 +12,15 @@ public class Appointment {
 	private String date;
 	private String time;
 	private String name;
+	private String custName;
 	private String address;
 	
-	public Appointment(String date, String time, String name, String address) {
+	public Appointment(String date, String time, String name, String custName, String address) {
 	
 		this.date = date;
 		this.time = time;
 		this.name = name;
+		this.custName = custName;
 		this.address = address;
 	}
 	public String getDate() {
@@ -39,11 +41,18 @@ public class Appointment {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getCustName() {
+		return custName;
+	}
+	public void setCustName(String custName) {
+		this.custName = custName;
 	}
 	
 	
