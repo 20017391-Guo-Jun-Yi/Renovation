@@ -408,7 +408,7 @@ public class C206_CaseStudy {
 			if (isRemove == true) {
 				System.out.println("Appointment deleted");
 			} else {
-				System.out.println("Invalid Appointment");
+				System.out.println("Appointment unfound");
 			}
 		} else if (confirm == 'N' || confirm == 'n') {
 
