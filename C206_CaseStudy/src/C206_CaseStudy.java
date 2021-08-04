@@ -8,6 +8,7 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+		ArrayList<Request> requestList = new ArrayList<Request>();
 		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
@@ -71,6 +72,26 @@ public class C206_CaseStudy {
 
 			} else if (option == 3) {
 				// Azri
+				C206_CaseStudy.setHeader("MANAGE REQUEST FOR QUOTE");
+				C206_CaseStudy.setHeader("OPTIONS :");
+				System.out.println("1. ADD A REQUEST FOR QUOTE");
+				System.out.println("2. VIEW ALL REQUEST FOR QUOTE");
+				System.out.println("3. DELETE A REQUEST FOR QUOTE BY REQUEST NAME");
+
+				int appOption = Helper.readInt("Enter option: ");
+
+				if (appOption == 1) {
+					Request op = inputRequest();
+					C206_CaseStudy.addRequest(requestList, op);
+
+				} else if (appOption == 2) {
+					C206_CaseStudy.viewAllRequest(requestList);
+
+				} else if (appOption == 3) {
+					C206_CaseStudy.deleteRequest(requestList);
+				} else {
+					System.out.println("Invaild option");
+				}
 
 			} else if (option == 4) {
 				// SuetTeng
@@ -269,6 +290,68 @@ public class C206_CaseStudy {
 			System.out.println("Invalid input");
 		}
 	}
+	
+	// ================================= Option 3 (REQUEST FOR QUOTE)==================================
+		// Add request for quote
+		public static Request inputRequest() {
+			String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
+			float area = Helper.readFloat("Enter Area Size: ");
+			String name = Helper.readString("Enter Request Name: ");
+			int number = Helper.readInt("Enter Number: ");
+			String email = Helper.readString("Enter Email: ");
+			float budget = Helper.readFloat("Enter budget: ");
+			String date = Helper.readString("Enter Target Completion Date: ");
+			String renovation = Helper.readString("Enter Renovation Type (whole house,room,kitchen,toilet): ");
+			int room = Helper.readInt("Enter number of rooms to renovate: ");
+			int toilet = Helper.readInt("Enter number of toilets to renovate: ");
+			String style = Helper.readString("Enter Renovation style (optional): ");
+			boolean urgent = Helper.readBoolean("Is the request urgent?: ");
+
+
+			Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
+			return quote;
+		}
+		public static void addRequest(ArrayList<Request> requestList, Request ql) {
+
+			requestList.add(ql);
+			System.out.println("Request for Quote added");
+		}
+
+		// View all request for quote
+		public static String viewAllRequest(ArrayList<Request> requestList) {
+			String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
+
+			for (int i = 0; i < requestList.size(); i++) {
+
+			}
+			System.out.println(output);
+			return output;
+		}
+
+		// Delete a request for quote by request name
+		public static void deleteRequest(ArrayList<Request> requestList) {
+			String name = Helper.readString("Enter request name > ");
+
+			boolean isRemove = false;
+			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < requestList.size(); i++) {
+					if (name == requestList.get(i).getName()) {
+						requestList.remove(i);
+						isRemove = true;
+					} else {
+						isRemove = false;
+					}
+				}
+				if (isRemove == true) {
+					System.out.println("Request for quote deleted");
+				} else {
+					System.out.println("Invalid request name");
+				}
+			}
+		}
+
+
 
 	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
 	// Add appointment
