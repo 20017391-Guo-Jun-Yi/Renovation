@@ -5,24 +5,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+	
+
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
+	
 	}
 
 	@Test
-	public void c206_test() {
+	public void addusertest()
+	{
 		
-		//fail("Not yet implemented"); 
-		assertTrue("C206_CaseStudy_SampleTest ",true);
+	}
+	public void viewalltest()
+	{
 		
-		int expected = 2;
-		assertEquals("Must compare 2 values", expected, 2);
+	}
+	
+	@After
+	public void tearDown() throws Exception {
 		
+
 	}
 	
 	
