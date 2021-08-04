@@ -8,13 +8,13 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-
+		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
 
 		int option = 0;
-
+		
 		while (option != 6) {
 
 			C206_CaseStudy.menu();
@@ -127,8 +127,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	// ================================= Option
-	// 1(User)=================================
+	// ================================= Option1(User)=================================
 	public static User inputUser() {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
@@ -198,8 +197,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option
-	// 2(PACKAGE)=================================
+	// ================================= Option2(PACKAGE)=================================
 	// Add package
 	public static Packages inputPackages() {
 		int code = Helper.readInt("Enter code > ");
@@ -267,8 +265,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option 5 (MANAGE
-	// APPOINTMENT)==================================
+	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
 
