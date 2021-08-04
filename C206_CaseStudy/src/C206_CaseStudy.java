@@ -398,7 +398,7 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < appointmentList.size(); i++) {
-				if (name == appointmentList.get(i).getCustName()) {
+				if (name.equals(appointmentList.get(i).getCustName())) {
 					appointmentList.remove(i);
 					isRemove = true;
 				} else {
@@ -408,7 +408,7 @@ public class C206_CaseStudy {
 			if (isRemove == true) {
 				System.out.println("Appointment deleted");
 			} else {
-				System.out.println("Invalid Appointment");
+				System.out.println("Appointment unfound");
 			}
 		} else if (confirm == 'N' || confirm == 'n') {
 
