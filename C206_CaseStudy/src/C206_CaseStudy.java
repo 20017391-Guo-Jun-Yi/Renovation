@@ -73,7 +73,12 @@ public class C206_CaseStudy {
 				// Azri
 
 			} else if (option == 4) {
-				// Suet Teng
+				// SuetTeng
+				C206_CaseStudy.setHeader("ADD QUOTATION");
+				C206_CaseStudy.setHeader("Options: ");
+				System.out.println("1. VIEW QUOTATIONS");
+				System.out.println("2. ADD A QUOTATION");
+				System.out.println("3. DELETE A QUOTATION");
 
 			} else if (option == 5) {
 				// Lixuan
