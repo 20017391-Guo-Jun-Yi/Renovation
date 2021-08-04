@@ -8,13 +8,14 @@ public class C206_CaseStudy {
 		ArrayList<Packages> packageList = new ArrayList<Packages>();
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
-
+		ArrayList<Request> requestList = new ArrayList<Request>();
+		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
-		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN","Lixuan", "RP"));
+		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
 
 		int option = 0;
-
+		
 		while (option != 6) {
 
 			C206_CaseStudy.menu();
@@ -33,7 +34,6 @@ public class C206_CaseStudy {
 				if (number == 1) {
 					User us = inputUser();
 					C206_CaseStudy.addusers(userList, us);
-
 				} else if (number == 2) {
 					C206_CaseStudy.ViewUser(userList);
 				} else if (number == 3) {
@@ -72,9 +72,34 @@ public class C206_CaseStudy {
 
 			} else if (option == 3) {
 				// Azri
+				C206_CaseStudy.setHeader("MANAGE REQUEST FOR QUOTE");
+				C206_CaseStudy.setHeader("OPTIONS :");
+				System.out.println("1. ADD A REQUEST FOR QUOTE");
+				System.out.println("2. VIEW ALL REQUEST FOR QUOTE");
+				System.out.println("3. DELETE A REQUEST FOR QUOTE BY REQUEST NAME");
+
+				int appOption = Helper.readInt("Enter option: ");
+
+				if (appOption == 1) {
+					Request op = inputRequest();
+					C206_CaseStudy.addRequest(requestList, op);
+
+				} else if (appOption == 2) {
+					C206_CaseStudy.viewAllRequest(requestList);
+
+				} else if (appOption == 3) {
+					C206_CaseStudy.deleteRequest(requestList);
+				} else {
+					System.out.println("Invaild option");
+				}
 
 			} else if (option == 4) {
-				// Suet Teng
+				// SuetTeng
+				C206_CaseStudy.setHeader("ADD QUOTATION");
+				C206_CaseStudy.setHeader("Options: ");
+				System.out.println("1. VIEW QUOTATIONS");
+				System.out.println("2. ADD A QUOTATION");
+				System.out.println("3. DELETE A QUOTATION");
 
 			} else if (option == 5) {
 				// Lixuan
@@ -128,7 +153,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	// ================================= Option 1(User)=================================
+	// ================================= Option1(User)=================================
 	public static User inputUser() {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
@@ -168,48 +193,37 @@ public class C206_CaseStudy {
 
 			name = userList.get(i).getName();
 
-			if (name.equals(userList.get(i).getName())) 
-			{
+			if (name.equals(userList.get(i).getName())) {
 				deleted = true;
 			}
 		}
 		return deleted;
 	}
-	public static void deleteUser(ArrayList<User> userList)
-	{
+
+	public static void deleteUser(ArrayList<User> userList) {
 		C206_CaseStudy.ViewUser(userList);
 		String name = Helper.readString("Enter name: ");
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		boolean ischecked = docheckUser(userList, name);
-		if (ischecked == false)
-		{
+		if (ischecked == false) {
 			System.out.println("user not deleted");
-		}
-		else
-		{
-			if (confirm == 'Y' || confirm == 'y') 
-			{
-				for (int i = 0; i < userList.size(); i++)
-				{
-					if (name.equalsIgnoreCase(userList.get(i).getName())) 
-					{
+		} else {
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < userList.size(); i++) {
+					if (name.equalsIgnoreCase(userList.get(i).getName())) {
 						userList.remove(i);
 						System.out.println("User deleted");
 					}
 				}
-			} 
-			else if (confirm == 'N' || confirm == 'n') 
-			{
+			} else if (confirm == 'N' || confirm == 'n') {
 				System.out.println("User not deleted!");
-			}
-			else 
-			{
+			} else {
 				System.out.println("Invaild Input");
 			}
 		}
 	}
 
-	// ================================= Option 2(PACKAGE)=================================
+	// ================================= Option2(PACKAGE)=================================
 	// Add package
 	public static Packages inputPackages() {
 		int code = Helper.readInt("Enter code > ");
@@ -237,7 +251,7 @@ public class C206_CaseStudy {
 
 			output += String.format("%-20d %-20s %-20s %-20s %-20s\n", packageList.get(i).getCode(),
 					packageList.get(i).getDesc(), packageList.get(i).getStart(), packageList.get(i).getEnd(),
-					packageList.get(i).getAmount()); 
+					packageList.get(i).getAmount());
 		}
 		return output;
 	}
@@ -277,8 +291,69 @@ public class C206_CaseStudy {
 		}
 	}
 	
+	// ================================= Option 3 (REQUEST FOR QUOTE)==================================
+		// Add request for quote
+		public static Request inputRequest() {
+			String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
+			float area = Helper.readFloat("Enter Area Size: ");
+			String name = Helper.readString("Enter Request Name: ");
+			int number = Helper.readInt("Enter Number: ");
+			String email = Helper.readString("Enter Email: ");
+			float budget = Helper.readFloat("Enter budget: ");
+			String date = Helper.readString("Enter Target Completion Date: ");
+			String renovation = Helper.readString("Enter Renovation Type (whole house,room,kitchen,toilet): ");
+			int room = Helper.readInt("Enter number of rooms to renovate: ");
+			int toilet = Helper.readInt("Enter number of toilets to renovate: ");
+			String style = Helper.readString("Enter Renovation style (optional): ");
+			boolean urgent = Helper.readBoolean("Is the request urgent?: ");
 
-	// ================================= Option 5 (MANAGE APPOINTMENT)==================================
+
+			Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
+			return quote;
+		}
+		public static void addRequest(ArrayList<Request> requestList, Request ql) {
+
+			requestList.add(ql);
+			System.out.println("Request for Quote added");
+		}
+
+		// View all request for quote
+		public static String viewAllRequest(ArrayList<Request> requestList) {
+			String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
+
+			for (int i = 0; i < requestList.size(); i++) {
+
+			}
+			System.out.println(output);
+			return output;
+		}
+
+		// Delete a request for quote by request name
+		public static void deleteRequest(ArrayList<Request> requestList) {
+			String name = Helper.readString("Enter request name > ");
+
+			boolean isRemove = false;
+			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < requestList.size(); i++) {
+					if (name == requestList.get(i).getName()) {
+						requestList.remove(i);
+						isRemove = true;
+					} else {
+						isRemove = false;
+					}
+				}
+				if (isRemove == true) {
+					System.out.println("Request for quote deleted");
+				} else {
+					System.out.println("Invalid request name");
+				}
+			}
+		}
+
+
+
+	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
 
@@ -308,8 +383,8 @@ public class C206_CaseStudy {
 		for (int i = 0; i < appointmentList.size(); i++) {
 
 			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", appointmentList.get(i).getDate(),
-					appointmentList.get(i).getTime(), appointmentList.get(i).getName(), appointmentList.get(i).getCustName(),
-					appointmentList.get(i).getAddress());
+					appointmentList.get(i).getTime(), appointmentList.get(i).getName(),
+					appointmentList.get(i).getCustName(), appointmentList.get(i).getAddress());
 		}
 		System.out.println(output);
 		return output;
@@ -323,7 +398,7 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < appointmentList.size(); i++) {
-				if (name == appointmentList.get(i).getCustName()) {
+				if (name.equals(appointmentList.get(i).getCustName())) {
 					appointmentList.remove(i);
 					isRemove = true;
 				} else {
@@ -333,7 +408,7 @@ public class C206_CaseStudy {
 			if (isRemove == true) {
 				System.out.println("Appointment deleted");
 			} else {
-				System.out.println("Invalid Appointment");
+				System.out.println("Appointment unfound");
 			}
 		} else if (confirm == 'N' || confirm == 'n') {
 
@@ -341,5 +416,5 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Invalid input");
 		}
-}
+	}
 }
