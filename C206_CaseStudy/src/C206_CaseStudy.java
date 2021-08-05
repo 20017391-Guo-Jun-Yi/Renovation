@@ -108,17 +108,17 @@ public class C206_CaseStudy {
 				int optionType = Helper.readInt("Enter an option type for more > ");
 				
 				if (optionType == 1) {
-					// View quotation (Customers)
+					// View quotation
 					//C206_CaseStudy.viewAllQuotations(quotationList);
 				}
 				else if (optionType == 2) {
-					// Add quotation (Designers)
+					// Add quotation
 					//Quotation qu = newQuotation();
 					//C206_CaseStudy.addQuotations(quotationList, quote);
 					
 				}
 				else if (optionType == 3) {
-					// Delete quotation (Designers)
+					// Delete quotation
 					//C206_CaseStudy.deleteQuotation(quotationList);
 				}
 				else {
