@@ -56,7 +56,7 @@ public C206_CaseStudyTest() {
 		
 		
 	}
-	@Test
+	/*@Test
 	public void testDeleteAppointment() {
 		// Item list is not null, so that can delete a new item.
 		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
@@ -71,7 +71,7 @@ public C206_CaseStudyTest() {
 		//The item just deleted is as same as the first item of the list
 		assertSame("Test that appointment deleted is same as item of the list?", app1, appointmentList.get(0));
 		
-	}
+	}*/
 	@Test
 	public void testviewAllAppointment() {
 
