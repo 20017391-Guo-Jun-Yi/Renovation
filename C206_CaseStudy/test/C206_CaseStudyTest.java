@@ -58,7 +58,7 @@ public C206_CaseStudyTest() {
 	}
 	@Test
 	public void testDeleteAppointment() {
-		// Item list is not null, so that can delete a new item
+		// Item list is not null, so that can delete a new item.
 		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
 		
 		//After deleting all item, the size of the list is 0
