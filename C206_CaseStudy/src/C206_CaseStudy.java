@@ -524,4 +524,6 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Invalid input");
 		}
+	}
+}
 	

@@ -12,15 +12,30 @@ public class User {
 	private String name;
 	private String role;
 	private String email;
-	private String password;
 	private String status;
+	private String password;
 	
-	public User(String name, String role, String email, String password, String status) {
+	public User(String name, String role, String email, String status, String password) {
+		this.name = name;
+		this.role = role;
+		this.email = email;
+		this.status = status;
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public User(String name, String role, String email, String status) {
 		
 		this.name = name;
 		this.role = role;
 		this.email = email;
-		this.password = password;
 		this.status = status;
 	}
 
@@ -46,14 +61,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getStatus() {
