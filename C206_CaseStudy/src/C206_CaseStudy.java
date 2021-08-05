@@ -457,7 +457,7 @@ public class C206_CaseStudy {
 					System.out.println("Invalid confirmation input. Please try again!");
 				}
 				
-			}*/
+			}
 
 				} else if (confirmDelete == 'N' || confirmDelete == 'n') {
 						System.out.println("No quotation was deleted.");
