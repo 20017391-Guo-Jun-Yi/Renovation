@@ -459,6 +459,14 @@ public class C206_CaseStudy {
 				
 			}*/
 
+				} else if (confirmDelete == 'N' || confirmDelete == 'n') {
+						System.out.println("No quotation was deleted.");
+						}
+				else {
+					System.out.println("Invalid confirmation input. Please try again!");
+				}
+				
+			}*/
 
 	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
 	// Add appointment
