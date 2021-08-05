@@ -14,6 +14,9 @@ public class C206_CaseStudy {
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
+		/*quotationList.add(new Quotation("Kee Suet Teng", "Landed", "700 sq ft",
+		"All Rooms and All Toilets", "4", "2", "$7,100", "12-09-21", "12345678",
+		"20023627@myrp.edu.sg"));*/
 
 		int option = 0;
 		
