@@ -398,7 +398,7 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < appointmentList.size(); i++) {
-				if (name.equals(appointmentList.get(i).getCustName())) {
+				if (name.equalsIgnoreCase(appointmentList.get(i).getCustName())) {
 					appointmentList.remove(i);
 					isRemove = true;
 				} else {
