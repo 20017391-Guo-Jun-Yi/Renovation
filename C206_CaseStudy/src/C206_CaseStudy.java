@@ -186,7 +186,6 @@ public class C206_CaseStudy {
 		User us = new User(name, role, email, status);
 
 		return us;
-
 	}
 
 	public static void addusers(ArrayList<User> userList, User us) {
