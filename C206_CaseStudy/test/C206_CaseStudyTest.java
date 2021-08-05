@@ -21,8 +21,6 @@ public class C206_CaseStudyTest {
 public C206_CaseStudyTest() {
 	super();
 }
-
-
 	
 
 	@Before
@@ -76,17 +74,6 @@ public C206_CaseStudyTest() {
 		assertSame("Check that Packages is deleted", p1, pList.get(0));
 
 	}
-
-
-	@Test
-	public void addusertest()
-	{
-		
-	}
-	public void viewalltest()
-	{
-		
-	}
 	
 	@Test
 	public void testAddAppointment() {
@@ -109,6 +96,7 @@ public C206_CaseStudyTest() {
 		
 		
 	}
+	//error
 	/*@Test
 	public void testDeleteAppointment() {
 		// Item list is not null, so that can delete a new item.
@@ -118,8 +106,6 @@ public C206_CaseStudyTest() {
 		C206_CaseStudy.deleteAppointment(appointmentList);		
 		
 		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
-		
-		
 		
 		//The item just deleted is as same as the first item of the list.
 		assertSame("Test that appointment deleted is same as item of the list?", app1, appointmentList.get(0));
