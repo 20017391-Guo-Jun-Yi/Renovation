@@ -68,7 +68,7 @@ public C206_CaseStudyTest() {
 		
 		
 		
-		//The item just deleted is as same as the first item of the list
+		//The item just deleted is as same as the first item of the list.
 		assertSame("Test that appointment deleted is same as item of the list?", app1, appointmentList.get(0));
 		
 	}*/
