@@ -11,7 +11,7 @@ public class C206_CaseStudy {
 		ArrayList<Request> requestList = new ArrayList<Request>();
 		
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
-		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
+		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
 
 		int option = 0;
@@ -158,10 +158,9 @@ public class C206_CaseStudy {
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
 		String email = Helper.readString("Enter email: ");
-		String password = Helper.readString("Enter Password: ");
 		String status = "new";
 
-		User us = new User(name, role, email, password, status);
+		User us = new User(name, role, email, status);
 
 		return us;
 
@@ -174,12 +173,12 @@ public class C206_CaseStudy {
 	}
 
 	public static String ViewUser(ArrayList<User> userList) {
-		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD", "ROLE", "STATUS");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "ROLE", "STATUS");
 
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
-					userList.get(i).getEmail(), userList.get(i).getPassword(), userList.get(i).getRole(),
+			output += String.format("%-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
+					userList.get(i).getEmail(),userList.get(i).getRole(),
 					userList.get(i).getStatus());
 		}
 		System.out.println(output);
