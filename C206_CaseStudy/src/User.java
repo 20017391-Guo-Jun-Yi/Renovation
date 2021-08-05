@@ -13,7 +13,24 @@ public class User {
 	private String role;
 	private String email;
 	private String status;
+	private String password;
 	
+	public User(String name, String role, String email, String status, String password) {
+		this.name = name;
+		this.role = role;
+		this.email = email;
+		this.status = status;
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public User(String name, String role, String email, String status) {
 		
 		this.name = name;
