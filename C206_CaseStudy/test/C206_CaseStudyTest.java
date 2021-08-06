@@ -203,7 +203,7 @@ public class C206_CaseStudyTest {
 		assertFalse(t2);
 
 	}
-	@Test
+	/*@Test
 	public void addRequestTest() {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
@@ -239,7 +239,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	/*public void deleteRequestTest()
+	public void deleteRequestTest()
 	{
 		// See got stuff or not 1 - Boundary
 		assertNotNull("Test if there is valid user arraylist to add to", requestList);
