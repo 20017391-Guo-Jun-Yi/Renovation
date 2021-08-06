@@ -8,21 +8,30 @@
  */
 
 public class User {
-	
+
 	private String name;
 	private String role;
 	private String email;
 	private String password;
 	private String status;
-	
+
+	public User(String name, String role, String email, String status) {
+		super();
+		this.name = name;
+		this.role = role;
+		this.email = email;
+		this.status = status;
+	}
 	public User(String name, String role, String email, String password, String status) {
-		
+
 		this.name = name;
 		this.role = role;
 		this.email = email;
 		this.password = password;
 		this.status = status;
 	}
+
+
 
 	public String getName() {
 		return name;
