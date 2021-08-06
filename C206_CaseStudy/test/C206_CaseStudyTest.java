@@ -115,7 +115,7 @@ public class C206_CaseStudyTest {
 
 
 		//After deleting all item, the size of the list is 0
-		C206_CaseStudy.deleteAppointment(appointmentList, app1);		
+		C206_CaseStudy.deleteAppointment(appointmentList, 0);		
 	
 		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
 		}

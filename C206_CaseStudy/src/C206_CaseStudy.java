@@ -16,7 +16,7 @@ public class C206_CaseStudy {
 
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
-		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
+		appointmentList.add(new Appointment("01-08-2021", "14:00", "JEN", "Lixuan", "RP"));
 		requestList.add(new Request("HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021",
 				"whole house", "4", "1", "vintage", "yes"));
 		/*
@@ -165,11 +165,23 @@ public class C206_CaseStudy {
 					C206_CaseStudy.viewAllAppointment(appointmentList);
 
 				} else if (appOption == 3) {
-
-					C206_CaseStudy.inputdeleteAppointment(appointmentList);
-				} else {
-					System.out.println("Invaild option");
+					int delAppointment = C206_CaseStudy.inputDeleteAppointment(appointmentList);
+					if (delAppointment >= 0) {
+						C206_CaseStudy.deleteAppointment(appointmentList, delAppointment);
+						System.out.println("Package deleted successfully");
+					} else if (delAppointment == -2) {
+						System.out.println("Package not deleted");
+					} else if (delAppointment == -3) {
+						System.out.println("Invalid input");
+					} else if (delAppointment == -1) {
+						System.out.println("Not found");
+					}
 				}
+
+				else {
+					System.out.println("Invalid option");
+				}
+					
 
 			} else if (option == 6) {
 				System.out.println("Thanks for your using our application. Bye!");
@@ -521,9 +533,38 @@ public class C206_CaseStudy {
 	}
 
 	// Delete a appointment
-	public static Appointment inputdeleteAppointment(ArrayList<Appointment> appointmentList) {
+	public static int inputDeleteAppointment(ArrayList<Appointment> appointmentList) {
+		String name = Helper.readString("Enter customer name > ");
+		int delAppointment = -1;
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 
-		Appointment app1 = null;
+		if (confirm == 'Y' || confirm == 'y') {
+			for (int i = 0; i < appointmentList.size(); i++) {
+				if ((name.equals(appointmentList.get(i).getCustName()) && (isRemove == false))) {
+				    appointmentList.remove(i);
+					delAppointment = i;
+					isRemove = true;
+					break;
+				}
+			}
+			if (isRemove == true) {
+				
+			} else {
+			
+			}
+		} else if (confirm == 'N' || confirm == 'n') {
+			delAppointment= -2;
+		
+		} else {
+			delAppointment = -3;
+		
+		}
+		return delAppointment;
+	}
+	
+
+	/*	Appointment app1 = null;
 		if (appointmentList.size() != 0) {
 			String name = Helper.readString("Enter customer name > ");
 			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
@@ -542,14 +583,13 @@ public class C206_CaseStudy {
 			}
 		}
 
-		return app1;
+		return app1;*/
 
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList, int delAppointment) {
+		
+		if (appointmentList.size() > 0) {
+			appointmentList.remove(delAppointment);
 	}
-
-	public static void deleteAppointment(ArrayList<Appointment> appointmentList, Appointment app1) {
-		C206_CaseStudy.viewAllAppointment(appointmentList);
-
-		appointmentList.remove(app1);
 	}
 
 }
