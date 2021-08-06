@@ -198,7 +198,10 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addusers(userList, u);
 		C206_CaseStudy.deleteUser(userList, u2);
 		assertEquals("Test that user arraylist size is 1", 1, userList.size());
-
+		
+		// Boundary
+		C206_CaseStudy.deleteUser(userList, u);
+		assertEquals("Test that user arraylist size is 0", 0, userList.size());
 	}
 //	@Test
 //	public void addRequestTest() {

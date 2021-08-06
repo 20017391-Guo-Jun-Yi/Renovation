@@ -47,7 +47,7 @@ public class C206_CaseStudy {
 					} else if (number == 2) {
 						C206_CaseStudy.ViewUser(userList);
 					} else if (number == 3) {
-						User dus = C206_CaseStudy.DeleteUserinput(userList);
+						User dus = C206_CaseStudy.deleteUserinput(userList);
 						C206_CaseStudy.deleteUser(userList, dus);
 					} else if (number == 4) {
 						System.out.println("Leave user account");
@@ -226,7 +226,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static User DeleteUserinput(ArrayList<User> userList) {
+	public static User deleteUserinput(ArrayList<User> userList) {
 
 		User us2 = null;
 		if (userList.size() != 0) {
@@ -334,8 +334,7 @@ public class C206_CaseStudy {
 		String toilet = Helper.readString("Enter number of toilets to renovate: ");
 		String style = Helper.readString("Enter Renovation style (optional): ");
 		String urgent = Helper.readString("Is the request urgent?: ");
-
-
+		
 		Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
 		return quote;
 	}
