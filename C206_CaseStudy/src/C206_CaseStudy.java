@@ -350,7 +350,11 @@ public class C206_CaseStudy {
 		String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
 
 		for (int i = 0; i < requestList.size(); i++) {
-			output += String.format("%-20s %-20 %-20s %-20s %-20s %-20 %-20s %-20s %-20s %-20s %-20s %-20s\n", requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(), requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(), requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).getBudget());
+			output += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", 
+	requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(),
+	requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), 
+	requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(),
+	requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).getBudget());
 		}
 		System.out.println(output);
 		return output;

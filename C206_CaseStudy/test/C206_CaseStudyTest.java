@@ -217,6 +217,17 @@ public class C206_CaseStudyTest {
 //		assertSame("Check that Request is added", q2, requestList.get(1));
 //	}
 
+	/*@Test
+	public void addRequestTest() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addRequest(requestList, q1);
+		assertEquals("Check that Request arraylist size is 1", 1, requestList.size());
+		assertSame("Check that Request is added", q1, requestList.get(0));
+>>>>>>> branch 'master' of https://github.com/20017391-Guo-Jun-Yi/Renovation.git
+
 //	@Test
 //	public void viewAllRequestTest() {
 //		// Check Not empty - Boundary	
@@ -236,7 +247,7 @@ public class C206_CaseStudyTest {
 //	}
 
 	@Test
-	/*public void deleteRequestTest()
+	public void deleteRequestTest()
 	{
 		// See got stuff or not 1 - Boundary
 		assertNotNull("Test if there is valid user arraylist to add to", requestList);
