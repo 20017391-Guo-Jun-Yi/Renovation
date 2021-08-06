@@ -14,6 +14,7 @@ public class C206_CaseStudy {
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
+		requestList.add(new Request("HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021", "whole house", "4", "1", "vintage", "yes"));
 		/*quotationList.add(new Quotation("Kee Suet Teng", "Landed", "700 sq ft",
 		"All Rooms and All Toilets", "4", "2", "$7,100", "12-09-21", "12345678",
 		"20023627@myrp.edu.sg"));*/
@@ -29,7 +30,7 @@ public class C206_CaseStudy {
 			if (option == 1) 
 			{
 				int number = 5;
-				
+
 				while (number != 4)
 				{
 					// JunHao
@@ -218,7 +219,7 @@ public class C206_CaseStudy {
 			System.out.println("Invaild email");
 			System.out.println("User not added");
 		}
-		
+
 	}
 
 	public static String ViewUser(ArrayList<User> userList) {
@@ -347,17 +348,17 @@ public class C206_CaseStudy {
 	// Add request for quote
 	public static Request inputRequest() {
 		String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
-		float area = Helper.readFloat("Enter Area Size: ");
+		String area = Helper.readString("Enter Area Size: ");
 		String name = Helper.readString("Enter Request Name: ");
-		int number = Helper.readInt("Enter Number: ");
+		String number = Helper.readString("Enter Number: ");
 		String email = Helper.readString("Enter Email: ");
-		float budget = Helper.readFloat("Enter budget: ");
+		String budget = Helper.readString("Enter budget: ");
 		String date = Helper.readString("Enter Target Completion Date: ");
 		String renovation = Helper.readString("Enter Renovation Type (whole house,room,kitchen,toilet): ");
-		int room = Helper.readInt("Enter number of rooms to renovate: ");
-		int toilet = Helper.readInt("Enter number of toilets to renovate: ");
+		String room = Helper.readString("Enter number of rooms to renovate: ");
+		String toilet = Helper.readString("Enter number of toilets to renovate: ");
 		String style = Helper.readString("Enter Renovation style (optional): ");
-		boolean urgent = Helper.readBoolean("Is the request urgent?: ");
+		String urgent = Helper.readString("Is the request urgent?: ");
 
 
 		Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
@@ -374,7 +375,7 @@ public class C206_CaseStudy {
 		String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
 
 		for (int i = 0; i < requestList.size(); i++) {
-			//output += String.format("%-20s %-20f %-20s %-20d %-20s %-20.2f %-20s %-20s %-20d %-20d %-20s %-20b\n", requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(), requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(), requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).setBudget(i));
+			output += String.format("%-20s %-20 %-20s %-20s %-20s %-20 %-20s %-20s %-20s %-20s %-20s %-20s\n", requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(), requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(), requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).getBudget());
 		}
 		System.out.println(output);
 		return output;
@@ -402,6 +403,7 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+
 
 	// ================================= Option 4 (QUOTATION) =========================================
 

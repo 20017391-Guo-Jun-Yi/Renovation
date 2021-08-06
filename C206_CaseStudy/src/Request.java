@@ -1,20 +1,21 @@
 
 public class Request {
 	private String property;
-	private float area;
+	private String area;
 	private String name;
-	private int number;
+	private String number;
 	private String email;
-	private float budget;
+	private String budget;
 	private String date;
 	private String renovation;
-	private int room;
-	private int toilet;
+	private String room;
+	private String toilet;
 	private String style;
-	private boolean urgent;
+	private String urgent;
 	
-	public Request(String property, float area, String name, int number, String email, float budget, String date,
-			String renovation, int room, int toilet, String style, boolean urgent) {
+	public Request(String property, String area, String name, String number, String email, String budget, String date,
+			String renovation, String room, String toilet, String style, String urgent) {
+		super();
 		this.property = property;
 		this.area = area;
 		this.name = name;
@@ -37,11 +38,11 @@ public class Request {
 		this.property = property;
 	}
 
-	public float getArea() {
+	public String getArea() {
 		return area;
 	}
 
-	public void setArea(float area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 
@@ -53,11 +54,11 @@ public class Request {
 		this.name = name;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
@@ -69,11 +70,11 @@ public class Request {
 		this.email = email;
 	}
 
-	public float getBudget() {
+	public String getBudget() {
 		return budget;
 	}
 
-	public void setBudget(float budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
 
@@ -93,19 +94,19 @@ public class Request {
 		this.renovation = renovation;
 	}
 
-	public int getRoom() {
+	public String getRoom() {
 		return room;
 	}
 
-	public void setRoom(int room) {
+	public void setRoom(String room) {
 		this.room = room;
 	}
 
-	public int getToilet() {
+	public String getToilet() {
 		return toilet;
 	}
 
-	public void setToilet(int toilet) {
+	public void setToilet(String toilet) {
 		this.toilet = toilet;
 	}
 
@@ -117,12 +118,12 @@ public class Request {
 		this.style = style;
 	}
 
-	public boolean isUrgent() {
+	public String getUrgent() {
 		return urgent;
 	}
 
-	public void setUrgent(boolean urgent) {
+	public void setUrgent(String urgent) {
 		this.urgent = urgent;
 	}
 	
-}
+	}
