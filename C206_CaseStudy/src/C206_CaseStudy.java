@@ -80,7 +80,18 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 3) {
 					// Delete a Package
-					C206_CaseStudy.deletePackages(packageList);
+					int delPackageIndex = C206_CaseStudy.inputDeletePackages(packageList);
+					if (delPackageIndex >= 0) {
+						C206_CaseStudy.deletePkg(packageList, delPackageIndex);
+						System.out.println("Package deleted successfully");
+					}
+					else if (delPackageIndex == -2) {
+						System.out.println("Package not deleted");
+					} else if (delPackageIndex == -3) {
+						System.out.println("Invalid input");
+					}else if (delPackageIndex == -1) {
+						System.out.println("Not found");
+					}
 				}
 
 				else {
@@ -296,31 +307,41 @@ public class C206_CaseStudy {
 	}
 
 	// Delete a package
-	public static void deletePackages(ArrayList<Packages> packageList) {
-		int code = Helper.readInt("Enter code to delete > ");
-		boolean isRemove = false;
-		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		if (confirm == 'Y' || confirm == 'y') {
-			for (int i = 0; i < packageList.size(); i++) {
-				if (code == packageList.get(i).getCode()) {
-					packageList.remove(i);
-					isRemove = true;
-				} else {
-					isRemove = false;
+		public static int inputDeletePackages(ArrayList<Packages> packageList) {
+			int code = Helper.readInt("Enter code to delete > ");
+			int delPackageIndex = -1;
+			boolean isRemove = false;
+			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+			
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < packageList.size(); i++) {
+					if ((code == packageList.get(i).getCode()) && (isRemove == false)) {
+//						packageList.remove(i);
+						delPackageIndex = i;
+						isRemove = true;
+						break;
+					}
 				}
-			}
-			if (isRemove == true) {
-				System.out.println("Package deleted");
+				if (isRemove == true) {
+//					System.out.println("Package deleted");
+				} else {
+//					System.out.println("Package unfound");
+				}
+			} else if (confirm == 'N' || confirm == 'n') {
+				delPackageIndex = -2;
+//				System.out.println("Package not deleted");
 			} else {
-				System.out.println("Package unfound");
+				delPackageIndex = -3;
+//				System.out.println("Invalid input");
 			}
-		} else if (confirm == 'N' || confirm == 'n') {
-
-			System.out.println("Package not deleted");
-		} else {
-			System.out.println("Invalid input");
+			return delPackageIndex;
 		}
-	}
+		
+		public static void deletePkg(ArrayList<Packages> packageList, int delPackageIndex) {
+			if (packageList.size() > 0) {
+			packageList.remove(delPackageIndex);
+			}
+			}
 
 	// ================================= Option 3 (REQUEST FOR QUOTE)==================================
 	// Add request for quote

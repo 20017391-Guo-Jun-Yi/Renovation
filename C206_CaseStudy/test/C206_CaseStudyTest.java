@@ -70,17 +70,15 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-20d %-20s %-20s %-20s %-20s\n",2, "SamplePackage2", "31-07-2021", "06-08-2021", "$6000");
 		assertEquals("Test that ViewAllPackageslist", testOutput, allPackages);
 	}
-	//	@Test
-	//	public void deletePackageTest() {
-	//		assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
-	//
-	//		C206_CaseStudy.addPackages(pList, p1);
-	//		C206_CaseStudy.addPackages(pList, p2);
-	//
-	//		C206_CaseStudy.deletePackages(pList);		
-	//		assertEquals("Test if that Package arraylist size is 1?", 1, appointmentList.size());
-	//		assertSame("Test that Package deleted is same as item of the list?", p1, pList.get(0));
-	//	}
+	@Test
+	public void deletePackageTest() {
+	    assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
+	    
+		C206_CaseStudy.addPackages(pList, p1);
+		
+        C206_CaseStudy.deletePkg(pList, 0);
+		assertEquals("Test if that Package arraylist size is 0?", 0, appointmentList.size());
+	}
 
 	@Test
 	public void testAddAppointment() {
