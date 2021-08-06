@@ -104,23 +104,23 @@ public class C206_CaseStudyTest {
 
 	}
 
-	//	@Test
-	//	public void testDeleteAppointment() {
-	//		C206_CaseStudy.addAppointment(appointmentList, app1);
-	//		C206_CaseStudy.addAppointment(appointmentList, app2);
-	//
-	//		// Item list is not null, so that can delete a new item..
-	//		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
-	//
-	//		//After deleting all item, the size of the list is 0
-	//		C206_CaseStudy.deleteAppointment(appointmentList);		
-	//
-	//		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
-	//
-	//		//The item just deleted is as same as the first item of the list.
-	//		assertSame("Test that appointment deleted is same as item of the list?", app1, appointmentList.get(0));
-	//
-	//	}
+	@Test
+	public void testDeleteAppointment() {
+		
+	    
+	
+			// Item list is not null, so that can delete a new item..
+		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
+		
+		C206_CaseStudy.addAppointment(appointmentList, app1);
+		assertEquals("Test if that appointment arraylist size is 1?", 1, appointmentList.size());
+
+
+		//After deleting all item, the size of the list is 0
+		C206_CaseStudy.deleteAppointment(appointmentList, app1);		
+	
+		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
+		}
 	@Test
 	public void testviewAllAppointment() {
 

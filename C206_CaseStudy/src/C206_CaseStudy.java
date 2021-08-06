@@ -1,4 +1,7 @@
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -154,7 +157,7 @@ public class C206_CaseStudy {
 
 				} else if (appOption == 3) {
 
-					C206_CaseStudy.deleteAppointment(appointmentList);
+					C206_CaseStudy.inputdeleteAppointment(appointmentList);
 				} else {
 					System.out.println("Invaild option");
 				}
@@ -473,9 +476,14 @@ public class C206_CaseStudy {
 	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
-
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String date = Helper.readString("Enter date of appointment (DD-MM-YYYY) > ");
+		LocalDate dateLD =LocalDate.parse(date, formatter1);
+		
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
 		String time = Helper.readString("Enter time of appointment (HH:MM) > ");
+		LocalTime timeLT =LocalTime.parse(time, formatter2);
+		
 		String name = Helper.readString("Enter designer name > ");
 		String custName = Helper.readString("Enter customer name > ");
 		String premise = Helper.readString("Enter address of the premise > ");
@@ -508,30 +516,36 @@ public class C206_CaseStudy {
 	}
 
 	// Delete a appointment
-	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
-		String name = Helper.readString("Enter customer name > ");
-
-		boolean isRemove = false;
-		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		if (confirm == 'Y' || confirm == 'y') {
-			for (int i = 0; i < appointmentList.size(); i++) {
-				if (name.equalsIgnoreCase(appointmentList.get(i).getCustName())) {
-					appointmentList.remove(i);
-					isRemove = true;
-				} else {
-					isRemove = false;
+	public static Appointment inputdeleteAppointment(ArrayList<Appointment> appointmentList) {
+		
+		Appointment app1 = null;
+		if (appointmentList.size() != 0) {
+			String name = Helper.readString("Enter customer name > ");
+			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+			if (confirm == 'Y' || confirm == 'y') {
+				for (int i = 0; i < appointmentList.size(); i++) {
+					if (name.equals(appointmentList.get(i).getCustName())) {
+						app1 = appointmentList.get(i);
+						System.out.println("Appointment deleted");
+						
+					} 
 				}
-			}
-			if (isRemove == true) {
-				System.out.println("Appointment deleted");
-			} else {
-				System.out.println("Appointment unfound");
-			}
-		} else if (confirm == 'N' || confirm == 'n') {
+				
+			} else if (confirm == 'N' || confirm == 'n') {
 
-			System.out.println("Appointment not deleted");
-		} else {
-			System.out.println("Invalid input");
+				System.out.println("Appointment not deleted");
+			} 
 		}
+
+		return app1;
+	
+	
 	}
+
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList, Appointment app1) {
+		C206_CaseStudy.viewAllAppointment(appointmentList);
+
+		appointmentList.remove(app1);
+	}
+	
 }
