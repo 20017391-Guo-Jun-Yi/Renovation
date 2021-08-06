@@ -27,12 +27,10 @@ public class C206_CaseStudy {
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) 
-			{
+			if (option == 1) {
 				int number = 5;
 
-				while (number != 4)
-				{
+				while (number != 4) {
 					// JunHao
 					C206_CaseStudy.setHeader("");
 					C206_CaseStudy.setHeader("Options: ");
@@ -49,13 +47,11 @@ public class C206_CaseStudy {
 					} else if (number == 2) {
 						C206_CaseStudy.ViewUser(userList);
 					} else if (number == 3) {
-						C206_CaseStudy.deleteUser(userList);
-					}else if (number == 4 )
-					{
+						User dus = C206_CaseStudy.DeleteUserinput(userList);
+						C206_CaseStudy.deleteUser(userList, dus);
+					} else if (number == 4) {
 						System.out.println("Leave user account");
-					}
-					else 
-					{
+					} else {
 						System.out.println("Invaild option");
 					}
 				}
@@ -203,19 +199,15 @@ public class C206_CaseStudy {
 		User us = new User(name, role, email, password, status);
 		return us;
 
-
 	}
 
 	public static void addusers(ArrayList<User> userList, User us) {
 
 		String pattern = "((\\w+|\\d)@\\w+(.com))";
-		if (us.getEmail().matches(pattern))
-		{
+		if (us.getEmail().matches(pattern)) {
 			userList.add(us);
 			System.out.println("User added");
-		}
-		else
-		{
+		} else {
 			System.out.println("Invaild email");
 			System.out.println("User not added");
 		}
@@ -227,56 +219,39 @@ public class C206_CaseStudy {
 
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
-					userList.get(i).getEmail(), userList.get(i).getRole(),
-					userList.get(i).getStatus());
+			output += String.format("%-20s %-20s %-20s %-20s\n", userList.get(i).getName(), userList.get(i).getEmail(),
+					userList.get(i).getRole(), userList.get(i).getStatus());
 		}
 		System.out.println(output);
 		return output;
 	}
 
-	public static Boolean docheckUser(ArrayList<User> userList, String name) {
+	public static User DeleteUserinput(ArrayList<User> userList) {
 
-		boolean deleted = false;
-		for (int i = 0; i < userList.size(); i++) {
-
-			name = userList.get(i).getName();
-
-			if (name.equals(userList.get(i).getName())) {
-				deleted = true;
-			}
-		}
-		return deleted;
-	}
-
-	public static void deleteUser(ArrayList<User> userList) {
-		C206_CaseStudy.ViewUser(userList);
-		String name = Helper.readString("Enter name: ");
-		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-		boolean ischecked = docheckUser(userList, name);
-		if (ischecked == false) {
-			System.out.println("user not deleted");
-		} else {
-			if (confirm == 'Y' || confirm == 'y') {
-				for (int i = 0; i < userList.size(); i++) {
-					if (name.equals(userList.get(i).getName())) {
-						userList.remove(i);
-						System.out.println("User deleted");
-					}
-					else
-					{
-						System.out.println("User not found");
-					}
+		User us2 = null;
+		if (userList.size() != 0) {
+			String name = Helper.readString("Enter name: ");
+			for (int i = 0; i < userList.size(); i++) {
+				if (userList.get(i).getName().equals(name)) {
+					us2 = userList.get(i);
+				} else {
+					System.out.println("User not found");
 				}
-			} else if (confirm == 'N' || confirm == 'n') {
-				System.out.println("User not deleted!");
-			} else {
-				System.out.println("Invaild Input");
 			}
+		} else {
+			System.out.println("No users");
 		}
+
+		return us2;
 	}
 
-	// ================================= Option2(PACKAGE)=================================
+	public static void deleteUser(ArrayList<User> userList, User us2) {
+		C206_CaseStudy.ViewUser(userList);
+
+		userList.remove(us2);
+	}
+
+	// =================================Option2(PACKAGE)=================================
 	// Add package
 	public static Packages inputPackages() {
 		int code = Helper.readInt("Enter code > ");
