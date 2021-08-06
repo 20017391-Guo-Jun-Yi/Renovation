@@ -1,7 +1,4 @@
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -493,13 +490,13 @@ public class C206_CaseStudy {
 	// (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
-		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		//DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String date = Helper.readString("Enter date of appointment (DD-MM-YYYY) > ");
-		LocalDate dateLD = LocalDate.parse(date, formatter1);
+		//LocalDate dateLD = LocalDate.parse(date, formatter1);
 
-		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
+		//DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
 		String time = Helper.readString("Enter time of appointment (HH:MM) > ");
-		LocalTime timeLT = LocalTime.parse(time, formatter2);
+		//LocalTime timeLT = LocalTime.parse(time, formatter2);
 
 		String name = Helper.readString("Enter designer name > ");
 		String custName = Helper.readString("Enter customer name > ");
