@@ -17,9 +17,6 @@ public class C206_CaseStudyTest {
 	private ArrayList<Packages> pList;
 
 	private ArrayList<Appointment> appointmentList;
-	
-	
-	
 
 	@Before
 	public void setUp() throws Exception {
@@ -41,6 +38,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addPackTest() {
 		assertNotNull("Check if there is valid Packages arraylist to add to", pList);
+		
 		C206_CaseStudy.addPackages(pList, p1);
 		assertEquals("Check that Packages arraylist size is 1", 1, pList.size());
 		assertSame("Check that Packages is added", p1, pList.get(0));
@@ -62,18 +60,22 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Packages arraylist size is 2", 2, pList.size());
 			
 		allPackages= C206_CaseStudy.viewAllPackages1(pList);
-		testOutput = String.format("%-20d %-20s %-20s %-20s %-20s\n",1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000");
+		testOutput += String.format("%-20d %-20s %-20s %-20s %-20s\n",1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000");
 		testOutput += String.format("%-20d %-20s %-20s %-20s %-20s\n",2, "SamplePackage2", "31-07-2021", "06-08-2021", "$6000");
 		assertEquals("Test that ViewAllPackageslist", testOutput, allPackages);
 	}
-	/*@Test
+	@Test
 	public void deletePackageTest() {
-		assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
-		C206_CaseStudy.deletePackages(pList);
-		assertEquals("Check that Packages arraylist size is 0", 0, pList.size());
-		assertSame("Check that Packages is deleted", p1, pList.get(0));
-
-	}*/
+	    assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
+	    
+		C206_CaseStudy.addPackages(pList, p1);
+		C206_CaseStudy.addPackages(pList, p2);
+		
+        C206_CaseStudy.deletePackages(pList);		
+		assertEquals("Test if that Package arraylist size is 1?", 1, appointmentList.size());
+		assertSame("Test that Package deleted is same as item of the list?", p1, pList.get(0));
+	}
+	
 	
 	@Test
 	public void testAddAppointment() {
@@ -97,7 +99,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	@Test
+	/*@Test
 	public void testDeleteAppointment() {
 		C206_CaseStudy.addAppointment(appointmentList, app1);
 		C206_CaseStudy.addAppointment(appointmentList, app2);
@@ -113,7 +115,7 @@ public class C206_CaseStudyTest {
 		//The item just deleted is as same as the first item of the list.
 		assertSame("Test that appointment deleted is same as item of the list?", app1, appointmentList.get(0));
 		
-	}
+	}*/
 	@Test
 	public void testviewAllAppointment() {
 
