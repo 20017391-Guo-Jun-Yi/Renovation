@@ -6,21 +6,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class C206_CaseStudyTest {
 	private Appointment app1;
 	private Appointment app2;
 	private Packages p1;
 	private Packages p2;
-	
+	private User u;
+	private User u2;
+	private ArrayList<User> userList;
 	private ArrayList<Packages> pList;
 
 	private ArrayList<Appointment> appointmentList;
 	
-public C206_CaseStudyTest() {
-	super();
-}
+	
 	
 
 	@Before
@@ -32,8 +30,12 @@ public C206_CaseStudyTest() {
 		p2 = new Packages(2, "SamplePackage2", "31-07-2021", "06-08-2021", "$6000");
 		app1 = new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP");
 		app2 = new Appointment("02/09/2021", "16:00", "MARY", "JOHN", "SP");
+		u = new User("JunYi", "Master", "20017391@rp.edu.sg", "Old");
+		u2 = new User("Chicken", "Developer", "Chicken@chicken.edu.sg", "New");
+		
 		appointmentList= new ArrayList<Appointment>();
 		pList = new ArrayList<Packages>();
+		userList = new ArrayList<User>();
 		
 	}
 	@Test
@@ -137,13 +139,70 @@ public C206_CaseStudyTest() {
 		assertEquals("Check that ViewAllAppointment list is same as the list", testOutput, allAppointment);
 	}
 
+	@Test
+	public void addusertest()
+	{
+		// Check Not empty - Boundary
+		assertNotNull("Check if there is valid user arraylist to add to", userList);
+
+		// Add +1 - Normal
+		C206_CaseStudy.addusers(userList, u);
+		assertEquals("Check that user arraylist size is 1", 1, userList.size());
+		assertSame("Check that user is added", u, userList.get(0));
+
+		// 1 Add +1 - Normal
+		C206_CaseStudy.addusers(userList, u2);
+		assertEquals("Check that user arraylist size is 2", 2, userList.size());
+		assertSame("Check that user is added", u2, userList.get(1));
+	}
+	@Test
+	public void viewalltest()
+	{
+		// Check Not empty - Boundary	
+		assertNotNull("Test if there is valid user arraylist to retrieve item", userList);
+
+		// Empty +2 See inside = 2 - Normal
+		C206_CaseStudy.addusers(userList, u);
+		C206_CaseStudy.addusers(userList, u2);
+		assertEquals("Test that user arraylist size is 2", 2, userList.size());
+
+		// See output 2 = 2 - Normal
+		String Alluser = C206_CaseStudy.ViewUser(userList);
+		String testOutput = String.format("%-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "ROLE", "STATUS");
+		testOutput += String.format("%-20s %-20s %-20s %-20s\n","JunYi", "20017391@rp.edu.sg", "Master", "Old");
+		testOutput += String.format("%-20s %-20s %-20s %-20s\n","Chicken", "Chicken@chicken.edu.sg", "Developer","New" );
+		assertEquals("Test that ViewAllUserlist", testOutput, Alluser);
+
+	}
+	@Test
+	public void deletest()
+	{
+		// See got stuff or not 1 - Boundary
+		assertNotNull("Test if there is valid user arraylist to add to", userList);
+
+		// See can delete or not - Normal
+		C206_CaseStudy.addusers(userList, u2);
+		Boolean ok = C206_CaseStudy.docheckUser(userList, "Chicken");
+		assertTrue("Test if the user is ok to delete", ok);
+		
+		// See can delete - Normal
+		boolean t = (userList.remove(u2));
+		assertTrue(t);
+		
+		// See can delete again - Error
+		boolean t2 = (userList.remove(u2));
+		assertFalse(t2);
+		
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		app1 = null;
 		app2 = null;
-		
+		userList=null;
 		appointmentList = null;
-		
+		u = null;
+		u2 = null;
 		p1 = null;
 		p2 = null;
 		pList = null;

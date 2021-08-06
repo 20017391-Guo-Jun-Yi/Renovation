@@ -199,12 +199,12 @@ public class C206_CaseStudy {
 	}
 
 	public static String ViewUser(ArrayList<User> userList) {
-		String output = String.format("%-20s %-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "PASSWORD", "ROLE", "STATUS");
+		String output = String.format("%-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "ROLE", "STATUS");
 
 		for (int i = 0; i < userList.size(); i++) {
 
-			output += String.format("%-20s %-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
-					userList.get(i).getEmail(), userList.get(i).getPassword(), userList.get(i).getRole(),
+			output += String.format("%-20s %-20s %-20s %-20s\n", userList.get(i).getName(),
+					userList.get(i).getEmail(), userList.get(i).getRole(),
 					userList.get(i).getStatus());
 		}
 		System.out.println(output);
