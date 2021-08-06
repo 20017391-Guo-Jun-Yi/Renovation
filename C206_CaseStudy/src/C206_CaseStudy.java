@@ -10,7 +10,7 @@ public class C206_CaseStudy {
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
 		ArrayList<Request> requestList = new ArrayList<Request>();
 		//ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
-		
+
 		packageList.add(new Packages(1, "SamplePackage1", "30-07-2021", "06-08-2021", "$5000"));
 		userList.add(new User("JunYi", "Master", "20017391@rp.edu.sg", "Password!", "Old"));
 		appointmentList.add(new Appointment("01/08/2021", "14:00", "JEN", "Lixuan", "RP"));
@@ -20,31 +20,43 @@ public class C206_CaseStudy {
 
 
 		int option = 0;
-		
+
 		while (option != 6) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) {
-				// JunHao
-				C206_CaseStudy.setHeader("");
-				C206_CaseStudy.setHeader("Options: ");
-				System.out.println("1. ADD");
-				System.out.println("2. VIEW");
-				System.out.println("3. DELETE");
+			if (option == 1) 
+			{
+				int number = 5;
+				
+				while (number != 4)
+				{
+					// JunHao
+					C206_CaseStudy.setHeader("");
+					C206_CaseStudy.setHeader("Options: ");
+					System.out.println("1. ADD");
+					System.out.println("2. VIEW");
+					System.out.println("3. DELETE");
+					System.out.println("4. Exit");
 
-				int number = Helper.readInt("Enter option for a function: ");
+					number = Helper.readInt("Enter option for a function: ");
 
-				if (number == 1) {
-					User us = inputUser();
-					C206_CaseStudy.addusers(userList, us);
-				} else if (number == 2) {
-					C206_CaseStudy.ViewUser(userList);
-				} else if (number == 3) {
-					C206_CaseStudy.deleteUser(userList);
-				} else {
-					System.out.println("Invaild option");
+					if (number == 1) {
+						User us = inputUser();
+						C206_CaseStudy.addusers(userList, us);
+					} else if (number == 2) {
+						C206_CaseStudy.ViewUser(userList);
+					} else if (number == 3) {
+						C206_CaseStudy.deleteUser(userList);
+					}else if (number == 4 )
+					{
+						System.out.println("Leave user account");
+					}
+					else 
+					{
+						System.out.println("Invaild option");
+					}
 				}
 
 			} else if (option == 2) {
@@ -105,9 +117,9 @@ public class C206_CaseStudy {
 				System.out.println("1. VIEW QUOTATIONS");
 				System.out.println("2. ADD A QUOTATION");
 				System.out.println("3. DELETE A QUOTATION");
-				
+
 				int optionType = Helper.readInt("Enter an option type for more > ");
-				
+
 				if (optionType == 1) {
 					// View quotation (Customers)
 					//C206_CaseStudy.viewAllQuotations(quotationList);
@@ -116,7 +128,7 @@ public class C206_CaseStudy {
 					// Add quotation (Designers)
 					//Quotation quote = inputQuotation();
 					//C206_CaseStudy.addQuotations(quotationList, quote);
-					
+
 				}
 				else if (optionType == 3) {
 					// Delete quotation (Designers)
@@ -180,6 +192,7 @@ public class C206_CaseStudy {
 
 	// ================================= Option1(User)=================================
 	public static User inputUser() {
+
 		String name = Helper.readString("Enter name: ");
 		String role = Helper.readString("Enter role: ");
 		String email = Helper.readString("Enter email: ");
@@ -187,15 +200,25 @@ public class C206_CaseStudy {
 		String status = "new";
 
 		User us = new User(name, role, email, password, status);
-
 		return us;
+
 
 	}
 
 	public static void addusers(ArrayList<User> userList, User us) {
 
-		userList.add(us);
-		System.out.println("User added");
+		String pattern = "((\\w+|\\d)@\\w+(.com))";
+		if (us.getEmail().matches(pattern))
+		{
+			userList.add(us);
+			System.out.println("User added");
+		}
+		else
+		{
+			System.out.println("Invaild email");
+			System.out.println("User not added");
+		}
+		
 	}
 
 	public static String ViewUser(ArrayList<User> userList) {
@@ -235,9 +258,13 @@ public class C206_CaseStudy {
 		} else {
 			if (confirm == 'Y' || confirm == 'y') {
 				for (int i = 0; i < userList.size(); i++) {
-					if (name.equalsIgnoreCase(userList.get(i).getName())) {
+					if (name.equals(userList.get(i).getName())) {
 						userList.remove(i);
 						System.out.println("User deleted");
+					}
+					else
+					{
+						System.out.println("User not found");
 					}
 				}
 			} else if (confirm == 'N' || confirm == 'n') {
@@ -315,70 +342,70 @@ public class C206_CaseStudy {
 			System.out.println("Invalid input");
 		}
 	}
-	
+
 	// ================================= Option 3 (REQUEST FOR QUOTE)==================================
-		// Add request for quote
-		public static Request inputRequest() {
-			String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
-			float area = Helper.readFloat("Enter Area Size: ");
-			String name = Helper.readString("Enter Request Name: ");
-			int number = Helper.readInt("Enter Number: ");
-			String email = Helper.readString("Enter Email: ");
-			float budget = Helper.readFloat("Enter budget: ");
-			String date = Helper.readString("Enter Target Completion Date: ");
-			String renovation = Helper.readString("Enter Renovation Type (whole house,room,kitchen,toilet): ");
-			int room = Helper.readInt("Enter number of rooms to renovate: ");
-			int toilet = Helper.readInt("Enter number of toilets to renovate: ");
-			String style = Helper.readString("Enter Renovation style (optional): ");
-			boolean urgent = Helper.readBoolean("Is the request urgent?: ");
+	// Add request for quote
+	public static Request inputRequest() {
+		String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
+		float area = Helper.readFloat("Enter Area Size: ");
+		String name = Helper.readString("Enter Request Name: ");
+		int number = Helper.readInt("Enter Number: ");
+		String email = Helper.readString("Enter Email: ");
+		float budget = Helper.readFloat("Enter budget: ");
+		String date = Helper.readString("Enter Target Completion Date: ");
+		String renovation = Helper.readString("Enter Renovation Type (whole house,room,kitchen,toilet): ");
+		int room = Helper.readInt("Enter number of rooms to renovate: ");
+		int toilet = Helper.readInt("Enter number of toilets to renovate: ");
+		String style = Helper.readString("Enter Renovation style (optional): ");
+		boolean urgent = Helper.readBoolean("Is the request urgent?: ");
 
 
-			Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
-			return quote;
+		Request quote = new Request(property, area, name, number, email, budget, date, renovation, room, toilet, style, urgent);
+		return quote;
+	}
+	public static void addRequest(ArrayList<Request> requestList, Request ql) {
+
+		requestList.add(ql);
+		System.out.println("Request for Quote added");
+	}
+
+	// View all request for quote
+	public static String viewAllRequest(ArrayList<Request> requestList) {
+		String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
+
+		for (int i = 0; i < requestList.size(); i++) {
+			//output += String.format("%-20s %-20f %-20s %-20d %-20s %-20.2f %-20s %-20s %-20d %-20d %-20s %-20b\n", requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(), requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(), requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).setBudget(i));
 		}
-		public static void addRequest(ArrayList<Request> requestList, Request ql) {
+		System.out.println(output);
+		return output;
+	}
 
-			requestList.add(ql);
-			System.out.println("Request for Quote added");
-		}
+	// Delete a request for quote by request name
+	public static void deleteRequest(ArrayList<Request> requestList) {
+		String name = Helper.readString("Enter request name > ");
 
-		// View all request for quote
-		public static String viewAllRequest(ArrayList<Request> requestList) {
-			String output = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request"); 
-
+		boolean isRemove = false;
+		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
+		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < requestList.size(); i++) {
-				//output += String.format("%-20s %-20f %-20s %-20d %-20s %-20.2f %-20s %-20s %-20d %-20d %-20s %-20b\n", requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(), requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(), requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(), requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).setBudget(i));
-			}
-			System.out.println(output);
-			return output;
-		}
-
-		// Delete a request for quote by request name
-		public static void deleteRequest(ArrayList<Request> requestList) {
-			String name = Helper.readString("Enter request name > ");
-
-			boolean isRemove = false;
-			char confirm = Helper.readChar("Are you sure? (Y/N) > ");
-			if (confirm == 'Y' || confirm == 'y') {
-				for (int i = 0; i < requestList.size(); i++) {
-					if (name == requestList.get(i).getName()) {
-						requestList.remove(i);
-						isRemove = true;
-					} else {
-						isRemove = false;
-					}
-				}
-				if (isRemove == true) {
-					System.out.println("Request for quote deleted");
+				if (name == requestList.get(i).getName()) {
+					requestList.remove(i);
+					isRemove = true;
 				} else {
-					System.out.println("Invalid request name");
+					isRemove = false;
 				}
 			}
+			if (isRemove == true) {
+				System.out.println("Request for quote deleted");
+			} else {
+				System.out.println("Invalid request name");
+			}
 		}
-		
-		// ================================= Option 4 (QUOTATION) =========================================
-		
-		/*// Add quotation
+	}
+
+	// ================================= Option 4 (QUOTATION) =========================================
+
+	/*// Add quotation
 		public static Quotation newQuotation() {
 			String name = Helper.readString("Enter name > ");
 			String property = Helper.readString("Enter property type > ");
@@ -392,23 +419,23 @@ public class C206_CaseStudy {
 			String contactEmail = Helper.readString("Enter contact email > ");
 			String renStyle = Helper.readString("Enter renovation style (optional) > ");
 			String reqUrgent = Helper.readString("Enter request urgency (optional) > ");
-			
+
 			Quotation quo = new Quote(name, property, area, renType, renRmNum, renToiNum, budget, compDate,
 					contactNum, contactEmail, renStyle, reqUrgent);
 			return quo;
          }
-         
+
         public static void addQuotations(ArrayList<Quotation> quotationList, Request qu) {
         	quotationList.add(qu);
         	System.out.println("Quotation added successfully!");
          }
-			
+
 		// View quotations
 		public static String viewAllQuotations0(ArrayList<Quotation> quotationList) {
 			C206_CaseStudy.setHeader("You have these quotations: ");
-			
+
 			String output = "";
-				
+
 			for (int a = 0; a < quotationList.size(); a++) {
 				output += String.format("", quotationList.get(a).getName(),
 						quotationList.get(a).getProperty(), quotationList.get(a).getArea(),
@@ -418,24 +445,24 @@ public class C206_CaseStudy {
 						quotationList.get(a).getContactEmail());
 			}
 			return output;
-				
+
 		}
-			
+
 		public static void viewAllQuotations(ArrayList<Quotation> quotationList) {
 			C206_CaseStudy.setHeader("You have these quotations: ");
-				
+
 			String output = String.format("", "REQUEST NAME", "PROPERTY TYPE", "AREA SIZE",
 					"RENOVATION TYPE", "NO. OF ROOMS TO RENOVATE", "NO. OF TOILETS TO RENOVATE",
 					"BUDGET", "TARGET COMPLETION DATE", "CONTACT NUMBER", "CONTACT EMAIL");
 			output += viewAllQuotations0(quotationList);
 			System.out.println(output);
 		}
-			
+
 		// Delete quotation
 		public static void deleteQuotation(ArrayList<Quotation> quotationList) {
 			int quotationID = Helper.readInt("Enter a quotation ID to delete > ");
 			char confirmDelete = Helper.readChar("Confirm that this quotation ID is to be deleted? (Y/N) > ");
-				
+
 			boolean deletedID = false;
 			if (confirmDelete == 'Y' || confirmDelete == 'y') {
 				for (int a = 0; a < quotationList.size(); a++) {
@@ -460,7 +487,7 @@ public class C206_CaseStudy {
 			else {
 				System.out.println("Invalid confirmation input. Please try again!");
 			}
-				
+
 		}*/
 
 	// ================================= Option 5 (MANAGEAPPOINTMENT)==================================
