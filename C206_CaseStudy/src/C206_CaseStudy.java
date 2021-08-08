@@ -209,8 +209,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 
-	// =================================
-	// Option1(User)=================================
+	// =================================Option1(User)=================================
 	public static User inputUser() {
 
 		String name = Helper.readString("Enter name: ");
@@ -347,8 +346,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option 3 (REQUEST FOR
-	// QUOTE)==================================
+	// ================================= Option 3 (REQUEST FOR QUOTE)==================================
 	// Add request for quote
 	public static Request inputRequest() {
 		String property = Helper.readString("Enter Property Type (HDB,Private,Landed): ");
@@ -416,8 +414,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= Option 4 (QUOTATION)
-	// =========================================
+	// ================================= Option 4 (QUOTATION)=========================================
 
 	/*
 	 * // Add quotation public static Quotation newQuotation() { String name =
@@ -491,11 +488,12 @@ public class C206_CaseStudy {
 	// (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
-		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+//		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String date = Helper.readString("Enter date of appointment (DD-MM-YYYY) > ");
 		//LocalDate dateLD = LocalDate.parse(date, formatter1);
 
-		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
+//		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
 		String time = Helper.readString("Enter time of appointment (HH:MM) > ");
 		//LocalTime timeLT = LocalTime.parse(time, formatter2);
 
@@ -540,7 +538,6 @@ public class C206_CaseStudy {
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < appointmentList.size(); i++) {
 				if ((name.equals(appointmentList.get(i).getCustName()) && (isRemove == false))) {
-//				    appointmentList.remove(i);
 					delAppointment = i;
 					isRemove = true;
 					break;
