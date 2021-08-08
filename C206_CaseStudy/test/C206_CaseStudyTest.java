@@ -12,7 +12,6 @@ public class C206_CaseStudyTest {
 	private Packages p1;
 	private Packages p2;
 	private User u;
-	private ArrayList<User> u3;
 	private User u2;
 	private Request q1;
 	private Request q2;
@@ -45,6 +44,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addPackTest() {
 		assertNotNull("Check if there is valid Packages arraylist to add to", pList);
+
 		C206_CaseStudy.addPackages(pList, p1);
 		assertEquals("Check that Packages arraylist size is 1", 1, pList.size());
 		assertSame("Check that Packages is added", p1, pList.get(0));
@@ -72,11 +72,10 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void deletePackageTest() {
-	    assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
-	    
+		assertNotNull("Check if there is valid Packages arraylist to delete from", pList);
+
 		C206_CaseStudy.addPackages(pList, p1);
-		
-        C206_CaseStudy.deletePkg(pList, 0);
+		C206_CaseStudy.deletePkg(pList, 0);
 		assertEquals("Test if that Package arraylist size is 0?", 0, appointmentList.size());
 	}
 
@@ -104,21 +103,19 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testDeleteAppointment() {
-		
-	    
-	
-			// Item list is not null, so that can delete a new item..
+
+		//Item list is not null, so that can delete a new item..
 		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
-		
+
 		C206_CaseStudy.addAppointment(appointmentList, app1);
 		assertEquals("Test if that appointment arraylist size is 1?", 1, appointmentList.size());
 
 
 		//After deleting all item, the size of the list is 0
-		//C206_CaseStudy.deleteAppointment(appointmentList, 0);		
-	
-		//assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
-		}
+		C206_CaseStudy.deleteAppointment(appointmentList, 0);		
+
+		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
+	}
 	@Test
 	public void testviewAllAppointment() {
 
@@ -150,15 +147,15 @@ public class C206_CaseStudyTest {
 	@Test
 	public void addusertest()
 	{
-		// Check Not empty - Boundary
+		// Check the list if its not empty - Boundary
 		assertNotNull("Check if there is valid user arraylist to add to", userList);
 
-		// Add +1 - Normal
+		// Check if the userList is able to add a data - Normal
 		C206_CaseStudy.addusers(userList, u);
 		assertEquals("Check that user arraylist size is 1", 1, userList.size());
 		assertSame("Check that user is added", u, userList.get(0));
 
-		// 1 Add +1 - Normal
+		// Check if the userlist has a data and is able to add in another data - Normal
 		C206_CaseStudy.addusers(userList, u2);
 		assertEquals("Check that user arraylist size is 2", 2, userList.size());
 		assertSame("Check that user is added", u2, userList.get(1));
@@ -166,15 +163,15 @@ public class C206_CaseStudyTest {
 	@Test
 	public void viewalltest()
 	{
-		// Check Not empty - Boundary	
+		// Check the list if its not empty - Boundary	
 		assertNotNull("Test if there is valid user arraylist to retrieve item", userList);
 
-		// Empty +2 See inside = 2 - Normal
+		// Check the userList is able to add multiple data into the list - Normal
 		C206_CaseStudy.addusers(userList, u);
 		C206_CaseStudy.addusers(userList, u2);
 		assertEquals("Test that user arraylist size is 2", 2, userList.size());
 
-		// See output 2 = 2 - Normal
+		// Check if the userList is able to display the correct output - Normal
 		String Alluser = C206_CaseStudy.ViewUser(userList);
 		String testOutput = String.format("%-20s %-20s %-20s %-20s\n", "NAME", "EMAIL", "ROLE", "STATUS");
 		testOutput += String.format("%-20s %-20s %-20s %-20s\n","JunYi", "20017391@rp.com", "Master", "Old");
@@ -185,38 +182,38 @@ public class C206_CaseStudyTest {
 	@Test
 	public void deletest()
 	{
-		// See got stuff or not 1 - Boundary
+		// Check the list if its not empty - Boundary
 		assertNotNull("Test if there is valid user arraylist to add to", userList);
-		
-		// See can delete - Normal
+
+		// Check the data if able to delete - Normal
 		C206_CaseStudy.deleteUser(userList, u2);
 		assertEquals("Test that user arraylist size is 0", 0, userList.size());
 
-		// See can add and delete again - Normal
+		// Check the data if able add and delete again - Normal
 		C206_CaseStudy.addusers(userList, u);
 		C206_CaseStudy.deleteUser(userList, u2);
 		assertEquals("Test that user arraylist size is 1", 1, userList.size());
-		
-		// Boundary
+
+		// Check the data to delete again - Boundary
 		C206_CaseStudy.deleteUser(userList, u);
 		assertEquals("Test that user arraylist size is 0", 0, userList.size());
 	}
-//	@Test
-//	public void addRequestTest() {
-//		// Item list is not null, so that can add a new item - boundary
-//		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
-//		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-//		//The item just added is as same as the first item of the list
-//		C206_CaseStudy.addRequest(requestList, q1);
-//		assertEquals("Check that Request arraylist size is 1", 1, requestList.size());
-//		assertSame("Check that Request is added", q1, requestList.get(0));
-//
-//		//Add another item. test The size of the list is 2? -normal
-//		//The item just added is as same as the second item of the list
-//		C206_CaseStudy.addRequest(requestList, q2);
-//		assertEquals("Check that Request arraylist size is 2", 2, requestList.size());
-//		assertSame("Check that Request is added", q2, requestList.get(1));
-//	}
+	//	@Test
+	//	public void addRequestTest() {
+	//		// Item list is not null, so that can add a new item - boundary
+	//		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
+	//		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+	//		//The item just added is as same as the first item of the list
+	//		C206_CaseStudy.addRequest(requestList, q1);
+	//		assertEquals("Check that Request arraylist size is 1", 1, requestList.size());
+	//		assertSame("Check that Request is added", q1, requestList.get(0));
+	//
+	//		//Add another item. test The size of the list is 2? -normal
+	//		//The item just added is as same as the second item of the list
+	//		C206_CaseStudy.addRequest(requestList, q2);
+	//		assertEquals("Check that Request arraylist size is 2", 2, requestList.size());
+	//		assertSame("Check that Request is added", q2, requestList.get(1));
+	//	}
 
 	/*@Test
 	public void addRequestTest() {
