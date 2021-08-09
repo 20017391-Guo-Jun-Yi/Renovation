@@ -107,13 +107,15 @@ public class C206_CaseStudyTest {
 		//Item list is not null, so that can delete a new item..
 		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
 		
-		// Eh idk wtf u testing ah so ya :) u want to test delete but u go add? HUH?
-		// C206_CaseStudy.addAppointment(appointmentList, app1);
-		// assertEquals("Test if that appointment arraylist size is 1?", 1, appointmentList.size());
+		// Add appointment, so arrayList not null
+		C206_CaseStudy.addAppointment(appointmentList, app1);
+		assertEquals("Test if that appointment arraylist size is 1?", 1, appointmentList.size());
+	
 		
 		//After deleting all item, the size of the list is 0
 		C206_CaseStudy.deleteAppointment(appointmentList, 0);		
 		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
+		
 	}
 	@Test
 	public void testviewAllAppointment() {
