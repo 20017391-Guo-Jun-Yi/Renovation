@@ -399,7 +399,7 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < requestList.size(); i++) {
-				if (name == requestList.get(i).getName()) {
+				if (requestList.get(i).getName().equals(name)) {
 					requestList.remove(i);
 					isRemove = true;
 				} else {
