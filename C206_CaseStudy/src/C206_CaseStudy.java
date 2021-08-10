@@ -131,16 +131,29 @@ public class C206_CaseStudy {
 				int optionType = Helper.readInt("Enter an option type for more > ");
 
 				if (optionType == 1) {
-					// View quotation (Customers)
+					// View quotation
 					// C206_CaseStudy.viewAllQuotations(quotationList);
 				} else if (optionType == 2) {
-					// Add quotation (Designers)
+					// Add quotation
 					// Quotation quote = inputQuotation();
 					// C206_CaseStudy.addQuotations(quotationList, quote);
-
 				} else if (optionType == 3) {
-					// Delete quotation (Designers)
+					// Delete quotation
 					// C206_CaseStudy.deleteQuotation(quotationList);
+					/*if (delIndex == -1) {
+						System.out.println("Quotation not deleted due to an invalid quotation ID. Please try again!");
+					}
+					else if (delIndex == -2) {
+						System.out.println("No quotation was deleted.");
+						
+					}
+					else if (delIndex == -3) {
+						System.out.println("Invalid confirmation input. Please try again!");
+					}
+					else {
+						C206_CaseStudy.deleteQuotation(quotationList, delIndex);
+					}
+				}*/
 				} else {
 					System.out.println("Invalid option");
 				}
@@ -428,74 +441,91 @@ public class C206_CaseStudy {
 	}
 
 	// ================================= Option 4 (QUOTATION)=========================================
+			// Add quotation
+			public static Quotation newQuotation() {
+				String name = Helper.readString("Enter name > ");
+				String quotationID = Helper.readString("Enter quotation ID > ");
+				String property = Helper.readString("Enter property type > ");
+				String area = Helper.readString("Enter total area for renovation > ");
+				String renType = Helper.readString("Enter renovation type > ");
+				String renRmNum = Helper.readString("Enter no. of rooms to renovate > ");
+				String renToiNum = Helper.readString("Enter no. of toilets to renovate > ");
+				String budget = Helper.readString("Enter total budget > $ ");
+				String compDate = Helper.readString("Enter target completion date > ");
+				String contactNum = Helper.readString("Enter contact number > ");
+				String contactEmail = Helper.readString("Enter contact email > ");
+				String renStyle = Helper.readString("Enter renovation style (optional) > ");
+				String reqUrgent = Helper.readString("Enter request urgency (optional) > ");
+					
+				Quotation quo = new Quotation(name, property, area, renType, renRmNum, renToiNum, budget, compDate,
+						contactNum, contactEmail, quotationID);
+					return quo;
+		         }
+		         
+		        public static void addQuotations(ArrayList<Quotation> quotationList, Quotation qu) {
+		        	quotationList.add(qu);
+		        	System.out.println("Quotation added successfully!");
+		         }
+					
+				// View quotations
+				public static String viewAllQuotations(ArrayList<Quotation> quotationList) {
+					C206_CaseStudy.setHeader("You have these quotations: ");
+					
+					String output = "";
+						
+					for (int a = 0; a < quotationList.size(); a++) {
+						output += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s",
+								quotationList.get(a).getName(), quotationList.get(a).getProperty(), quotationList.get(a).getArea(),
+								quotationList.get(a).getRenType(), quotationList.get(a).getRenRmNum(),
+								quotationList.get(a).getRenToiNum(), quotationList.get(a).getBudget(),
+								quotationList.get(a).getCompDate(), quotationList.get(a).getContactNum(),
+								quotationList.get(a).getContactEmail(), quotationList.get(a).getQuotationID());
+					}
+					return output;
+						
+				}
+					
+					
+				// Delete quotation
+				public static int inputDeleteQuotation(ArrayList<Quotation> quotationList) {
+					String quotationID = Helper.readString("Enter a quotation ID to delete > ");
+					char confirmDelete = Helper.readChar("Confirm that this quotation ID is to be deleted? (Y/N) > ");
+					
+					int delIndex = 0;
+					
+					boolean deletedID = false;
+					if (confirmDelete == 'Y' || confirmDelete == 'y') {
+						for (int a = 0; a < quotationList.size(); a++) {
+							if (quotationID.equals(quotationList.get(a).getQuotationID())) {
+								delIndex = a;
+								deletedID = true;
+							}
+							else {
+								deletedID = false;
+							}
+						}
+						if (deletedID == true) {
+							return delIndex;
+						}
+						else {
+							return -1;
+						}
 
-	/*
-	 * // Add quotation public static Quotation newQuotation() { String name =
-	 * Helper.readString("Enter name > "); String property =
-	 * Helper.readString("Enter property type > "); String area =
-	 * Helper.readString("Enter total area for renovation > "); String renType =
-	 * Helper.readString("Enter renovation type > "); String renRmNum =
-	 * Helper.readString("Enter no. of rooms to renovate > "); String renToiNum =
-	 * Helper.readString("Enter no. of toilets to renovate > "); String budget =
-	 * Helper.readString("Enter total budget > "); String compDate =
-	 * Helper.readString("Enter target completion date > "); String contactNum =
-	 * Helper.readString("Enter contact number > "); String contactEmail =
-	 * Helper.readString("Enter contact email > "); String renStyle =
-	 * Helper.readString("Enter renovation style (optional) > "); String reqUrgent =
-	 * Helper.readString("Enter request urgency (optional) > ");
-	 * 
-	 * Quotation quo = new Quote(name, property, area, renType, renRmNum, renToiNum,
-	 * budget, compDate, contactNum, contactEmail, renStyle, reqUrgent); return quo;
-	 * }
-	 * 
-	 * public static void addQuotations(ArrayList<Quotation> quotationList, Request
-	 * qu) { quotationList.add(qu);
-	 * System.out.println("Quotation added successfully!"); }
-	 * 
-	 * // View quotations public static String
-	 * viewAllQuotations0(ArrayList<Quotation> quotationList) {
-	 * C206_CaseStudy.setHeader("You have these quotations: ");
-	 * 
-	 * String output = "";
-	 * 
-	 * for (int a = 0; a < quotationList.size(); a++) { output += String.format("",
-	 * quotationList.get(a).getName(), quotationList.get(a).getProperty(),
-	 * quotationList.get(a).getArea(), quotationList.get(a).getRenType(),
-	 * quotationList.get(a).getRenRmNum(), quotationList.get(a).getRenToiNum(),
-	 * quotationList.get(a).getBudget(), quotationList.get(a).getCompDate(),
-	 * quotationList.get(a).getContactNum(),
-	 * quotationList.get(a).getContactEmail()); } return output;
-	 * 
-	 * }
-	 * 
-	 * public static void viewAllQuotations(ArrayList<Quotation> quotationList) {
-	 * C206_CaseStudy.setHeader("You have these quotations: ");
-	 * 
-	 * String output = String.format("", "REQUEST NAME", "PROPERTY TYPE",
-	 * "AREA SIZE", "RENOVATION TYPE", "NO. OF ROOMS TO RENOVATE",
-	 * "NO. OF TOILETS TO RENOVATE", "BUDGET", "TARGET COMPLETION DATE",
-	 * "CONTACT NUMBER", "CONTACT EMAIL"); output +=
-	 * viewAllQuotations0(quotationList); System.out.println(output); }
-	 * 
-	 * // Delete quotation public static void deleteQuotation(ArrayList<Quotation>
-	 * quotationList) { int quotationID =
-	 * Helper.readInt("Enter a quotation ID to delete > "); char confirmDelete =
-	 * Helper.readChar("Confirm that this quotation ID is to be deleted? (Y/N) > ");
-	 * 
-	 * boolean deletedID = false; if (confirmDelete == 'Y' || confirmDelete == 'y')
-	 * { for (int a = 0; a < quotationList.size(); a++) { if (quotationID ==
-	 * quotationList.get(a).getQuotation_ID()) { quotationList.remove(a); deletedID
-	 * = true; } else { deletedID = false; } } if (deletedID == true) {
-	 * System.out.println("Quotation deleted successfully!"); } else { System.out.
-	 * println("Quotation was not deleted due to an invalid quotation ID. Please try again!"
-	 * ); }
-	 * 
-	 * } else if (confirmDelete == 'N' || confirmDelete == 'n') {
-	 * System.out.println("No quotation was deleted."); } else {
-	 * System.out.println("Invalid confirmation input. Please try again!"); }
-	 * 
-	 * }
-	 */
+					} else if (confirmDelete == 'N' || confirmDelete == 'n') {
+							return -2;
+							}
+					else {
+						return -3;
+					}
+						
+				}
+				
+				public static void deleteQuotation(ArrayList<Quotation> qList, int delIndex) {
+					if (qList.size() > 0) {
+						qList.remove(delIndex);
+					}
+				}
+	
 
 	// ================================= Option 5
 	// (MANAGEAPPOINTMENT)==================================

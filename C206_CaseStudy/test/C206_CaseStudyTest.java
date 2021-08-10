@@ -15,11 +15,14 @@ public class C206_CaseStudyTest {
 	private User u2;
 	private Request q1;
 	private Request q2;
+	private Quotation qu1;
+	private Quotation qu2;
 
 	private ArrayList<User> userList;
 	private ArrayList<Packages> pList;
 	private ArrayList<Request> requestList;
 	private ArrayList<Appointment> appointmentList;
+	private ArrayList<Quotation> qList;
 
 
 
@@ -37,11 +40,18 @@ public class C206_CaseStudyTest {
 		u2 = new User("Chicken", "Developer", "Chicken@chicken.com", "New");
 		q1 = new Request("HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021","whole house", "4", "1", "vintage", "yes");
 		q2 = new Request("Private", "123.4", "John", "82345678", "john@gmail.com", "23456.50", "20-09-2021","whole house", "6", "2", "scandinavian", "yes");
+		qu1 = new Quotation("Suet Teng", "Landed", "1560 sq ft", "Rooms and Toilets",
+				"4", "2", "1500", "12-09-21", "12345876", "20023627@myrp.edu.sg",
+				"3");
+		qu2 = new Quotation("Suet Teng", "Landed", "1000 sq ft", "Rooms and Toilets",
+				"2", "1", "900", "18-10-21", "12345876", "20023627@myrp.edu.sg",
+				"6");
 
 		appointmentList= new ArrayList<Appointment>();
 		pList = new ArrayList<Packages>();
 		userList = new ArrayList<User>();
 		requestList = new ArrayList<>();
+		qList = new ArrayList<Quotation>();
 
 	}
 	@Test
@@ -245,6 +255,45 @@ public class C206_CaseStudyTest {
 
 
 	}
+	
+	@Test
+	public void deleteQuotation() {
+		//Test that item list is not null so that items can be deleted from it - Boundary
+			assertNotNull("Test that item list is not null for deletion", qList);
+		
+		//Test that an item that is deleted, the list is now empty - Boundary
+			C206_CaseStudy.deleteQuotation(qList, 0);
+			assertTrue("Test that the list is now empty", qList.isEmpty());
+	}
+	
+	
+	@Test
+	/*public void viewQuotation() {
+		//Test that the output can be correctly displayed - Normal
+		String viewAllQuo = C206_CaseStudy.viewAllQuotations(qList);
+		String viewAllQuoTest = String.format("%-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s"
+				+ "%-15s %-15s %-15s", "NAME", "PROPERTY", "AREA (SQ FT)", "TYPE",
+				"NO. OF ROOMS", "NO. OF TOILETS", "BUDGET", "COMPLETION DATE", "MOBILE NO.", "EMAIL",
+				"QUOTATION ID", "STYLE", "URGENCY STATUS");
+		viewAllQuoTest += String.format("%-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s"
+				+ "%-15s %-15s %-15s", "Suet Teng", "Landed", "1560", "Rooms and Toilets",
+				"4", "2", "1500", "12-09-21", "12345876", "20023627@myrp.edu.sg",
+				"3", "Modern", "Y");
+		viewAllQuoTest += String.format("%-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-15s"
+				+ "%-15s %-15s", "Suet Teng", "Landed", "1000", "Rooms and Toilets",
+				"2", "1", "900", "18-10-21", "12345876", "20023627@myrp.edu.sg",
+				"6", "Modern", "N");
+		assertEquals("Test that the output can be correctly displayed", viewAllQuo, viewAllQuoTest);
+			
+		//Test that item list is not null so that items can be viewed - Boundary
+		assertNotNull("Test that item list is not null for viewing", qList);
+			
+		//Test that after deleting 1 item, it will not be displayed
+		//C206_CaseStudy.deleteQuotation(qList, qu2);
+		//assertEquals("Test that there is only one item displayed after another was deleted", 1, qList.size());
+		 
+}*/
+	
 
 
 
@@ -262,5 +311,8 @@ public class C206_CaseStudyTest {
 		p1 = null;
 		p2 = null;
 		pList = null;
+		qu1 = null;
+		qu2 = null;
+		qList = null;
 	}
 }
