@@ -17,9 +17,11 @@ public class Quotation {
 	private String compDate; //Date that the renovation will be completed on
 	private String contactNum;
 	private String contactEmail;
+	private String quotationID;
 	
 	public Quotation (String name, String property, String area, String renType, String renRmNum,
-			String renToiNum, String budget, String compDate, String contactNum, String contactEmail) {
+			String renToiNum, String budget, String compDate, String contactNum, String contactEmail,
+			String quotationID) {
 		this.name = name;
 		this.property = property;
 		this.area = area;
@@ -30,6 +32,7 @@ public class Quotation {
 		this.compDate = compDate;
 		this.contactNum = contactNum;
 		this.contactEmail = contactEmail;
+		this.quotationID = quotationID;
 	}
 
 	public String getName() {
@@ -71,9 +74,19 @@ public class Quotation {
 	public String getContactEmail() {
 		return contactEmail;
 	}
+
+	public String getQuotationID() {
+		return quotationID;
+	}
+
+	public void setQuotationID(String quotationID) {
+		this.quotationID = quotationID;
+	}
 	
 	
 
 }
+
+
 
 
