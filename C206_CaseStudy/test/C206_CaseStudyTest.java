@@ -266,6 +266,24 @@ public class C206_CaseStudyTest {
 			assertTrue("Test that the list is now empty", qList.isEmpty());
 	}
 	
+	@Test
+	public void addQuotation() {
+		//Test that item list is not null so that items can be added to it - Boundary
+		assertNotNull("Test that item list is not null for addition", qList);
+			
+		//Test that the item just added is the same as the first item in the list - Normal
+		C206_CaseStudy.addQuotations(qList, qu1);
+		assertSame("Test that the first item added is in index 0 of the arraylist", qu1, qList.get(0));
+			
+		//Test that the item just added is the same as the second item in the list - Normal
+		C206_CaseStudy.addQuotations(qList, qu2);
+		assertSame("Test that the second item added is in index 1 of the arraylist", qu2, qList.get(1));
+
+		//Test that when 1 item is added to the array list, the list's size becomes 2 - Normal
+		assertEquals("Test that the array list size is 2 when an item is added", 2, qList.size());
+
+	}
+	
 	
 	@Test
 	/*public void viewQuotation() {
