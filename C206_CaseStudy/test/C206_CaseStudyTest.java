@@ -35,10 +35,13 @@ public class C206_CaseStudyTest {
 		app2 = new Appointment("02/09/2021", "16:00", "MARY", "JOHN", "SP");
 		u = new User("JunYi", "Master", "20017391@rp.com", "Old");
 		u2 = new User("Chicken", "Developer", "Chicken@chicken.com", "New");
+		q1 = new Request("HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021","whole house", "4", "1", "vintage", "yes");
+		q2 = new Request("Private", "123.4", "John", "82345678", "john@gmail.com", "23456.50", "20-09-2021","whole house", "6", "2", "scandinavian", "yes");
 
 		appointmentList= new ArrayList<Appointment>();
 		pList = new ArrayList<Packages>();
 		userList = new ArrayList<User>();
+		requestList = new ArrayList<>();
 
 	}
 	@Test
@@ -106,16 +109,16 @@ public class C206_CaseStudyTest {
 
 		//Item list is not null, so that can delete a new item..
 		assertNotNull("Test if there is valid appointment arraylist to delete from", appointmentList);
-		
+
 		// Add appointment, so arrayList not null
 		C206_CaseStudy.addAppointment(appointmentList, app1);
 		assertEquals("Test if that appointment arraylist size is 1?", 1, appointmentList.size());
-	
-		
+
+
 		//After deleting all item, the size of the list is 0
 		C206_CaseStudy.deleteAppointment(appointmentList, 0);		
 		assertEquals("Test if that appointment arraylist size is 0?", 0, appointmentList.size());
-		
+
 	}
 	@Test
 	public void testviewAllAppointment() {
@@ -199,73 +202,50 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteUser(userList, u);
 		assertEquals("Test that user arraylist size is 0", 0, userList.size());
 	}
-	//	@Test
-	//	public void addRequestTest() {
-	//		// Item list is not null, so that can add a new item - boundary
-	//		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
-	//		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-	//		//The item just added is as same as the first item of the list
-	//		C206_CaseStudy.addRequest(requestList, q1);
-	//		assertEquals("Check that Request arraylist size is 1", 1, requestList.size());
-	//		assertSame("Check that Request is added", q1, requestList.get(0));
-	//
-	//		//Add another item. test The size of the list is 2? -normal
-	//		//The item just added is as same as the second item of the list
-	//		C206_CaseStudy.addRequest(requestList, q2);
-	//		assertEquals("Check that Request arraylist size is 2", 2, requestList.size());
-	//		assertSame("Check that Request is added", q2, requestList.get(1));
-	//	}
-
-	/*@Test
+	@Test
 	public void addRequestTest() {
-		// Item list is not null, so that can add a new item - boundary
+
 		assertNotNull("Check if there is valid Request arraylist to add to", requestList);
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-		//The item just added is as same as the first item of the list
 		C206_CaseStudy.addRequest(requestList, q1);
 		assertEquals("Check that Request arraylist size is 1", 1, requestList.size());
 		assertSame("Check that Request is added", q1, requestList.get(0));
->>>>>>> branch 'master' of https://github.com/20017391-Guo-Jun-Yi/Renovation.git
 
-//	@Test
-//	public void viewAllRequestTest() {
-//		// Check Not empty - Boundary	
-//		assertNotNull("Test if there is valid user arraylist to retrieve item", requestList);
-//
-//		// Empty +2 See inside = 2 - Normal
-//		C206_CaseStudy.addRequest(requestList, q1);
-//		C206_CaseStudy.addRequest(requestList, q2);
-//		assertEquals("Test that user arraylist size is 2", 2, requestList.size());
-//
-//		// See output 2 = 2 - Normal
-//		String Allrequest = C206_CaseStudy.viewAllRequest(requestList);
-//		String testOutput = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request");
-//		testOutput += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021", "whole house", "4", "1", "vintage", "yes");
-//		testOutput += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "private", "164.2", "Alif", "82345678", "alif@gmail.com", "23456.60", "15-09-2021", "whole house", "6", "2", "classic", "yes");
-//		assertEquals("Test that ViewAllRequest", testOutput, Allrequest);
-//	}
+		C206_CaseStudy.addRequest(requestList, q2);
+		assertEquals("Check that Request arraylist size is 2", 2, requestList.size());
+		assertSame("Check that Request is added", q2, requestList.get(1));
+	}
+
+
+
+	@Test
+	public void viewAllRequestTest() {	
+		assertNotNull("Test if there is valid request arraylist to retrieve item", requestList);
+
+		C206_CaseStudy.addRequest(requestList, q1);
+		C206_CaseStudy.addRequest(requestList, q2);
+		assertEquals("Test that user arraylist size is 2", 2, requestList.size());
+
+		String Allrequest = C206_CaseStudy.viewAllRequest(requestList);
+		String testOutput = String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Property Type", "Area Size", "Request Name", "Contact number", "Email", "Budget", "Target Completion Date", "Renovation type", "No. of rooms", "No. of toilets", "Renovation style", "Urgent request");
+		testOutput += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "HDB", "96.4", "Azri", "81234567", "azri@gmail.com", "12345.50", "12-10-2021", "whole house", "4", "1", "vintage", "yes");
+		testOutput += String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Private", "123.4", "John", "82345678", "john@gmail.com", "23456.50", "20-09-2021","whole house", "6", "2", "scandinavian", "yes");
+		assertEquals("Test that ViewAllRequest", testOutput, Allrequest);
+	}
 
 	@Test
 	public void deleteRequestTest()
 	{
-		// See got stuff or not 1 - Boundary
-		assertNotNull("Test if there is valid user arraylist to add to", requestList);
+		assertNotNull("Test if there is valid appointment arraylist to delete from", requestList);
 
-		// See can delete or not - Normal
-		C206_CaseStudy.addRequest(requestList, q2);
-		Boolean ok = C206_CaseStudy.deleteRequest(requestList, "Alif");
-		assertTrue("Test if the user is ok to delete", ok);
+		C206_CaseStudy.addRequest(requestList, q1);
+		assertEquals("Test if that request arraylist size is 1?", 1, requestList.size());
 
-		// See can delete - Normal
-		boolean t = (userList.remove(u2));
-		assertTrue(t);
+		C206_CaseStudy.deleteRequest(requestList, 0);		
+		assertEquals("Test if that request arraylist size is 0?", 0, requestList.size());
 
-		// See can delete again - Error
-		boolean t2 = (userList.remove(u2));
-		assertFalse(t2);
 
 	}
-	 */
+
 
 
 	@After
@@ -278,6 +258,7 @@ public class C206_CaseStudyTest {
 		u2 = null;
 		q1 = null;
 		q2 = null;
+		requestList = null;
 		p1 = null;
 		p2 = null;
 		pList = null;

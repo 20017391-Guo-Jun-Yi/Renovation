@@ -179,7 +179,7 @@ public class C206_CaseStudy {
 				else {
 					System.out.println("Invalid option");
 				}
-					
+
 
 			} else if (option == 6) {
 				System.out.println("Thanks for your using our application. Bye!");
@@ -385,32 +385,45 @@ public class C206_CaseStudy {
 					requestList.get(i).getProperty(), requestList.get(i).getArea(), requestList.get(i).getName(),
 					requestList.get(i).getNumber(), requestList.get(i).getEmail(), requestList.get(i).getBudget(),
 					requestList.get(i).getDate(), requestList.get(i).getRenovation(), requestList.get(i).getRoom(),
-					requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).getBudget());
+					requestList.get(i).getToilet(), requestList.get(i).getStyle(), requestList.get(i).getUrgent());
 		}
 		System.out.println(output);
 		return output;
 	}
 
 	// Delete a request for quote by request name
-	public static void deleteRequest(ArrayList<Request> requestList) {
+	public static int deleteRequest(ArrayList<Request> requestList) {
 		String name = Helper.readString("Enter request name > ");
-
+		int delRequest = -1;
 		boolean isRemove = false;
 		char confirm = Helper.readChar("Are you sure? (Y/N) > ");
 		if (confirm == 'Y' || confirm == 'y') {
 			for (int i = 0; i < requestList.size(); i++) {
-				if (requestList.get(i).getName().equals(name)) {
-					requestList.remove(i);
+				if ((requestList.get(i).getName().equals(name)) && (isRemove == false)) {
+					delRequest = i;
 					isRemove = true;
-				} else {
-					isRemove = false;
+					break;
 				}
 			}
 			if (isRemove == true) {
-				System.out.println("Request for quote deleted");
+
 			} else {
-				System.out.println("Invalid request name");
+
 			}
+		} else if (confirm == 'N' || confirm == 'n') {
+			delRequest= -2;
+
+		} else {
+			delRequest = -3;
+
+		}
+		return delRequest;
+	}
+
+			public static void deleteRequest(ArrayList<Request> requestList, int delRequest) {
+
+		if (requestList.size() > 0) {
+			requestList.remove(delRequest);
 		}
 	}
 
@@ -488,12 +501,12 @@ public class C206_CaseStudy {
 	// (MANAGEAPPOINTMENT)==================================
 	// Add appointment
 	public static Appointment inputAppointment() {
-		
-//		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+		//		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String date = Helper.readString("Enter date of appointment (DD-MM-YYYY) > ");
 		//LocalDate dateLD = LocalDate.parse(date, formatter1);
 
-//		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
+		//		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:MM");
 		String time = Helper.readString("Enter time of appointment (HH:MM) > ");
 		//LocalTime timeLT = LocalTime.parse(time, formatter2);
 
@@ -544,26 +557,26 @@ public class C206_CaseStudy {
 				}
 			}
 			if (isRemove == true) {
-				
+
 			} else {
-			
+
 			}
 		} else if (confirm == 'N' || confirm == 'n') {
 			delAppointment= -2;
-		
+
 		} else {
 			delAppointment = -3;
-		
+
 		}
 		return delAppointment;
 	}
-	
+
 
 	public static void deleteAppointment(ArrayList<Appointment> appointmentList, int delAppointment) {
-		
+
 		if (appointmentList.size() > 0) {
 			appointmentList.remove(delAppointment);
-	}
+		}
 	}
 
 }
