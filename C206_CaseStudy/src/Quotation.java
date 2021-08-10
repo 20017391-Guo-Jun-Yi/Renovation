@@ -35,7 +35,7 @@ public class Quotation {
 		this.quotationID = quotationID;
 	}
 
-	public String getName() {
+	public String getName() { //
 		return name;
 	}
 
